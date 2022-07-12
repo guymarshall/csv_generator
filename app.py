@@ -56,3 +56,5 @@ first_names = file_to_list("first-names.txt")
 
 for name in first_names:
 	print(name)
+
+days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
