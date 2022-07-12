@@ -1,4 +1,4 @@
-def file_to_array(filename: str):
+def file_to_list(filename: str):
     words = []
 
     with open(filename) as file:
