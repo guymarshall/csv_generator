@@ -49,3 +49,10 @@ csv_fields = {
 		"numberOfPeriods"
 	]
 }
+
+from file import file_to_list
+
+first_names = file_to_list("first-names.txt")
+
+for name in first_names:
+	print(name)
