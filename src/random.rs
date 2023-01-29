@@ -67,3 +67,19 @@ fn random_teacher_type(type_: &str) -> &str {
         _ => &names[0],
     }
 }
+
+fn generate_initials(first_name: &str, middle_name: &str, last_name: &str) -> String {
+    let mut result: String = String::new();
+
+    if !first_name.is_empty() {
+        result.push(first_name.chars().next().unwrap());
+    }
+    if !middle_name.is_empty() {
+        result.push(middle_name.chars().next().unwrap());
+    }
+    if !last_name.is_empty() {
+        result.push(last_name.chars().next().unwrap());
+    }
+
+    result
+}
