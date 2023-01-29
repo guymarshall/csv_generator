@@ -1,5 +1,6 @@
 mod file;
 mod random;
+mod functions;
 
 fn main() {
     println!("Hello, world!");
