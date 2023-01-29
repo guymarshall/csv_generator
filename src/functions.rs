@@ -1,4 +1,3 @@
-// FUNCTIONS
 /*
 // <?php
 //
@@ -10,13 +9,6 @@
 //     $key = array_rand($first_names);
 //     $first_name = $first_names[$key];
 //     return $first_name;
-// }
-//
-// function random_number(int $min, int $max, bool $return_string = false)
-// {
-//     $random_number = mt_rand($min, $max);
-//
-//     return $return_string ? (string) $random_number : $random_number;
 // }
 //
 // function generate_csv(string $filename, array $field_headings, array $data)
