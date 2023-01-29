@@ -27,9 +27,4 @@ fn generate_initials(first_name: &str, middle_name: &str, last_name: &str) -> St
 //
 //     fclose($file);
 // }
-//
-// function generate_initials(string $first_name = '', string $middle_name = '', string $last_name = '')
-// {
-//     return $first_name[0].$middle_name[0].$last_name[0];
-// }
 */
