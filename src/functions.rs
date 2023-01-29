@@ -16,19 +16,4 @@
 // {
 //     return $first_name[0].$middle_name[0].$last_name[0];
 // }
-//
-// function random_teacher_type(string $type)
-// {
-//     $names = ['Teacher', 'Cover Teacher', 'Trainee Teacher', 'Head of Department'];
-//     $display_names = ['Teacher', 'Cover', 'Trainee', 'Head'];
-//
-//     if ($type == 'name')
-//     {
-//         return $names[mt_rand(0, count($names))];
-//     }
-//     else if ($type == 'displayName')
-//     {
-//         return $display_names[mt_rand(0, count($display_names))];
-//     }
-// }
 */
