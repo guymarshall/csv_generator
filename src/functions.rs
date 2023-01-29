@@ -17,18 +17,6 @@
 //     return $first_name[0].$middle_name[0].$last_name[0];
 // }
 //
-// function generate_random_length_random_array()
-// {
-//     $output = [];
-//
-//     for ($i = 0; $i < mt_rand(1, 10); $i++)
-//     {
-//         $output[] = mt_rand(1, 10);
-//     }
-//
-//     return $output;
-// }
-//
 // function random_teacher_type(string $type)
 // {
 //     $names = ['Teacher', 'Cover Teacher', 'Trainee Teacher', 'Head of Department'];
