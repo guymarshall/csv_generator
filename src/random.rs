@@ -18,3 +18,15 @@ fn get_random_name(names: &Vec<&str>) -> String {
     let index: usize = rng.sample(range);
     names[index].to_string()
 }
+
+fn random_day(include_weekends: bool) -> String {
+    let days_of_week: [&str; 5] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+    let mut rng: ThreadRng = thread_rng();
+    let range: Uniform<usize> = if include_weekends {
+        Uniform::new(0, 7)
+    } else {
+        Uniform::new(0, 5)
+    };
+    let index: usize = rng.sample(range);
+    days_of_week[index].to_string()
+}
