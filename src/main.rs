@@ -16,42 +16,6 @@ fn main() {
 
 // APP
 /*
-// <!DOCTYPE html>
-// <html lang="en">
-// <head>
-//     <meta charset="UTF-8">
-//     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//     <title>CSV Generator</title>
-// </head>
-// <body>
-//     <form action="index.php" method="get">
-//         <label for="curriculumCount">Curriculum Count:</label>
-//         <input type="number" name="curriculumCount" id="curriculumCount">
-//         <br>
-//         <label for="periodScheduleCount">PeriodSchedule Count:</label>
-//         <input type="number" name="periodScheduleCount" id="periodScheduleCount">
-//         <br>
-//         <label for="roomCount">Room Count:</label>
-//         <input type="number" name="roomCount" id="roomCount">
-//         <br>
-//         <label for="studentCount">Student Count:</label>
-//         <input type="number" name="studentCount" id="studentCount">
-//         <br>
-//         <label for="subjectCount">Subject Count:</label>
-//         <input type="number" name="subjectCount" id="subjectCount">
-//         <br>
-//         <label for="teacherCount">Teacher Count:</label>
-//         <input type="number" name="teacherCount" id="teacherCount">
-//         <br>
-//         <label for="teacherTypeCount">Teacher Type Count:</label>
-//         <input type="number" name="teacherTypeCount" id="teacherTypeCount">
-//         <br>
-//         <input type="submit" value="Generate">
-//     </form>
-// </body>
-// </html>
-
 // <?php
 
 // require_once 'functions.php';
