@@ -1,3 +1,7 @@
+use std::fs::File;
+use std::io::prelude::*;
+use std::path::Path;
+
 fn generate_initials(first_name: &str, middle_name: &str, last_name: &str) -> String {
     let mut result: String = String::new();
 
@@ -14,17 +18,22 @@ fn generate_initials(first_name: &str, middle_name: &str, last_name: &str) -> St
     result
 }
 
-/*
-// function generate_csv(string $filename, array $field_headings, array $data)
-// {
-//     $file = fopen($filename, 'w');
-//
-//     fputcsv($file, $field_headings);
-//
-//     foreach ($data as $row) {
-//         fputcsv($file, $row);
-//     }
-//
-//     fclose($file);
-// }
-*/
+pub fn generate_csv(filename: &str, field_headings: &[&str], data: &[Vec<&str>]) {
+    let path: &Path = Path::new(filename);
+    let mut file: File = match File::create(&path) {
+        Err(why) => panic!("couldn't create {}: {}", path.display(), why),
+        Ok(file) => file,
+    };
+
+    let headings: String = field_headings.join(",");
+    if let Err(why) = writeln!(file, "{}", headings) {
+        panic!("couldn't write to {}: {}", path.display(), why);
+    }
+
+    for record in data {
+        let line: String = record.join(",");
+        if let Err(why) = writeln!(file, "{}", line) {
+            panic!("couldn't write to {}: {}", path.display(), why);
+        }
+    }
+}
