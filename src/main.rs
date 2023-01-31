@@ -22,6 +22,16 @@ fn main() {
         || teacher_type_count < 1 {
         panic!("All counts must be more than 0");
     }
+
+    const FILES: &[(&str, &[&str])] = &[
+        ("curriculum", &["studentID", "subjectID", "numberOfLessonsPerWeek"]),
+        ("period_schedule", &["dayOfWeek", "numberOfPeriods"]),
+        ("room", &["name", "maximumClassSize"]),
+        ("student", &["firstName", "middleNames", "surname", "initials"]),
+        ("subject", &["subjectName", "subjectYear", "set", "maximumClassSize", "roomsTaught"]),
+        ("teacher", &["firstName", "middleName", "surname", "initials", "teacherTypeID", "subjectTaughtIDs", "roomTaughtIDs"]),
+        ("teacher_type", &["name", "displayName"]),
+    ];
 }
 
 // APP
