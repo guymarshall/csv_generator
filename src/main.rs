@@ -49,21 +49,11 @@ fn main() {
             number_of_lessons_per_week: random_number(1, 9).to_string().trim().parse().unwrap_or(0)
         });
     }
+    //generate_csv('Curriculum.csv', ['studentID', 'subjectID', 'numberOfLessonsPerWeek'], $curriculum_data);
 }
 
 // APP
 /*
-// $curriculum_data = [];
-// for ($i = 0; $i < $_GET['curriculumCount']; $i++)
-// {
-//     $curriculum_data[] = [
-//         (string) $i,
-//         random_number(1, $_GET['subjectCount'] + 1),
-//         random_number(1, 9)
-//     ];
-// }
-// generate_csv('Curriculum.csv', ['studentID', 'subjectID', 'numberOfLessonsPerWeek'], $curriculum_data);
-//
 // $period_schedule_data = [];
 // for ($i = 0; $i < $_GET['periodScheduleCount']; $i++)
 // {
