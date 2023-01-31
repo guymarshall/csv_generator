@@ -36,16 +36,6 @@ fn main() {
 
 // APP
 /*
-// $files = [
-//     'curriculum' => ['studentID', 'subjectID', 'numberOfLessonsPerWeek'],
-//     'period_schedule' => ['dayOfWeek', 'numberOfPeriods'],
-//     'room' => ['name', 'maximumClassSize'],
-//     'student' => ['firstName', 'middleNames', 'surname', 'initials'],
-//     'subject' => ['subjectName', 'subjectYear', 'set', 'maximumClassSize', 'roomsTaught'],
-//     'teacher' => ['firstName', 'middleName', 'surname', 'initials', 'teacherTypeID', 'subjectTaughtIDs', 'roomTaughtIDs'],
-//     'teacher_type' => ['name', 'displayName']
-// ];
-//
 // $curriculum_data = [];
 // for ($i = 0; $i < $_GET['curriculumCount']; $i++)
 // {
