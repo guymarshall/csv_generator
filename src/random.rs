@@ -8,14 +8,14 @@ pub fn random_number(min: i32, max: i32) -> String {
     range.sample(&mut rng).to_string()
 }
 
-fn get_random_name(names: &Vec<&str>) -> String {
+pub fn get_random_name(names: &Vec<&str>) -> String {
     let mut rng: ThreadRng = thread_rng();
     let range: Uniform<usize> = Uniform::new(0, names.len());
     let index: usize = rng.sample(range);
     names[index].to_string()
 }
 
-fn random_day(include_weekends: bool) -> String {
+pub fn random_day(include_weekends: bool) -> String {
     let days_of_week: [&str; 5] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
     let mut rng: ThreadRng = thread_rng();
     let range: Uniform<usize> = if include_weekends {
@@ -27,7 +27,7 @@ fn random_day(include_weekends: bool) -> String {
     days_of_week[index].to_string()
 }
 
-fn random_room() -> &'static str {
+pub fn random_room() -> &'static str {
     let rooms: [&str; 49] = ["Ma1", "Ma2", "Ma3", "Ma4", "Ma5", "Ma6", "Ma7", "Ma8", "Ma9", "DT1", "DT2", "DT3", "DT4", "DT5", "IT1", "IT2", "IT3", "La1", "La2", "La3", "La4", "La5", "History1", "History2", "History3", "Geography1", "Geography2", "Geography3", "Sc1", "Sc2", "Sc3", "Sc4", "Sc5", "Sc6", "Sc7", "Sc8", "Eng1", "Eng2", "Eng3", "Eng4", "Eng5", "Eng6", "Eng7", "Eng8", "Music1", "Music2", "Drama1", "Drama2", "PE"];
 
     let mut rng: ThreadRng = thread_rng();
@@ -35,7 +35,7 @@ fn random_room() -> &'static str {
     &rooms[rng.gen_range(range)]
 }
 
-fn generate_random_length_random_vector() -> Vec<i32> {
+pub fn generate_random_length_random_vector() -> Vec<i32> {
     let mut rng: ThreadRng = thread_rng();
     let length_range: RangeInclusive<usize> = 1..=11;
     let length: usize = rng.gen_range(length_range);
@@ -49,7 +49,7 @@ fn generate_random_length_random_vector() -> Vec<i32> {
     output
 }
 
-fn random_teacher_type(type_: &str) -> &str {
+pub fn random_teacher_type(type_: &str) -> &str {
     let names: [&str; 4] = ["Teacher", "Cover Teacher", "Trainee Teacher", "Head of Department"];
     let display_names: [&str; 4] = ["Teacher", "Cover", "Trainee", "Head"];
 
