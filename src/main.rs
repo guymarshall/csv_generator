@@ -1,4 +1,4 @@
-use crate::random::{random_day, random_number};
+use crate::random::{random_day, random_number, random_room};
 
 mod file;
 mod random;
@@ -63,7 +63,17 @@ fn main() {
     }
     //generate_csv('PeriodSchedule.csv', ['dayOfWeek', 'numberOfPeriods'], $period_schedule_data);
 
-
+    struct Room {
+        name: String,
+        maximum_class_size: i32
+    }
+    let mut room_data: Vec<Room> = vec![];
+    for i in 0..room_count {
+        room_data.push(Room {
+            name: random_room().parse().unwrap(),
+            maximum_class_size: random_number(15, 31)
+        })
+    }
     //generate_csv('Room.csv', ['name', 'maximumClassSize'], $room_data);
 
 
