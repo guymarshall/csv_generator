@@ -82,16 +82,6 @@ fn main() {
 
 // APP
 /*
-// $period_schedule_data = [];
-// for ($i = 0; $i < $_GET['periodScheduleCount']; $i++)
-// {
-//     $period_schedule_data[] = [
-//         random_day(),
-//         random_number(1, 6)
-//     ];
-// }
-// generate_csv('PeriodSchedule.csv', ['dayOfWeek', 'numberOfPeriods'], $period_schedule_data);
-//
 // $room_data = [];
 // for ($i = 0; $i < $_GET['roomCount']; $i++)
 // {
