@@ -50,6 +50,18 @@ fn main() {
         });
     }
     //generate_csv('Curriculum.csv', ['studentID', 'subjectID', 'numberOfLessonsPerWeek'], $curriculum_data);
+
+    //generate_csv('PeriodSchedule.csv', ['dayOfWeek', 'numberOfPeriods'], $period_schedule_data);
+
+    //generate_csv('Room.csv', ['name', 'maximumClassSize'], $room_data);
+
+    //generate_csv('Student.csv', ['firstName', 'middleNames', 'surname', 'initials'], $student_data);
+
+    //generate_csv('Subject.csv', ['subjectName', 'subjectYear', 'set', 'maximumClassSize', 'roomsTaught'], $subject_data);
+
+    //generate_csv('Teacher.csv', ['firstName', 'middleName', 'surname', 'initials', 'teacherTypeID', 'subjectTaughtIDs', 'roomTaughtIDs'], $teacher_data);
+
+    //generate_csv('TeacherType.csv', ['name', 'displayName'], $teacher_type_data);
 }
 
 // APP
