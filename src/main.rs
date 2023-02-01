@@ -50,7 +50,17 @@ fn main() {
     }
     //generate_csv('Curriculum.csv', ['studentID', 'subjectID', 'numberOfLessonsPerWeek'], $curriculum_data);
 
-
+    struct PeriodSchedule {
+        day_of_week: String,
+        number_of_periods: i32
+    }
+    let mut period_schedule_data: Vec<PeriodSchedule> = vec![];
+    for i in 0..period_schedule_count {
+        period_schedule_data.push(PeriodSchedule {
+            day_of_week: random_day(false),
+            number_of_periods: random_number(1, 6)
+        })
+    }
     //generate_csv('PeriodSchedule.csv', ['dayOfWeek', 'numberOfPeriods'], $period_schedule_data);
 
 
