@@ -41,7 +41,7 @@ fn main() {
         number_of_lessons_per_week: i32
     }
 
-    let mut curriculum_data = vec![];
+    let mut curriculum_data: Vec<CurriculumData> = vec![];
     for i in 0..curriculum_count {
         curriculum_data.push(CurriculumData {
             index: i.to_string(),
