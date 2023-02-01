@@ -92,16 +92,6 @@ fn main() {
 
 // APP
 /*
-// $room_data = [];
-// for ($i = 0; $i < $_GET['roomCount']; $i++)
-// {
-//     $room_data[] = [
-//         random_room(),
-//         random_number(15, 31)
-//     ];
-// }
-// generate_csv('Room.csv', ['name', 'maximumClassSize'], $room_data);
-//
 // $student_data = [];
 // for ($i = 0; $i < $_GET['studentCount']; $i++)
 // {
