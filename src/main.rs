@@ -35,15 +35,15 @@ fn main() {
         ("teacher_type", &["name", "displayName"]),
     ];
 
-    struct CurriculumData {
+    struct Curriculum {
         index: String,
         subject_id: i32,
         number_of_lessons_per_week: i32
     }
 
-    let mut curriculum_data: Vec<CurriculumData> = vec![];
+    let mut curriculum_data: Vec<Curriculum> = vec![];
     for i in 0..curriculum_count {
-        curriculum_data.push(CurriculumData {
+        curriculum_data.push(Curriculum {
             index: i.to_string(),
             subject_id: random_number(1, subject_count + 1).to_string().trim().parse().unwrap_or(0),
             number_of_lessons_per_week: random_number(1, 9).to_string().trim().parse().unwrap_or(0)
