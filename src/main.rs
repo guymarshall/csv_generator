@@ -1,4 +1,4 @@
-use crate::random::random_number;
+use crate::random::{random_day, random_number};
 
 mod file;
 mod random;
