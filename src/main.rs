@@ -116,22 +116,6 @@ fn main() {
 
 // APP
 /*
-// $student_data = [];
-// for ($i = 0; $i < $_GET['studentCount']; $i++)
-// {
-//     $first_name = get_random_name('first-names.txt');
-//     $middle_name = get_random_name('middle-names.txt');
-//     $last_name = get_random_name('middle-names.txt');
-//
-//     $student_data[] = [
-//         $first_name,
-//         $middle_name,
-//         $last_name,
-//         generate_initials($first_name, $middle_name, $last_name)
-//     ];
-// }
-// generate_csv('Student.csv', ['firstName', 'middleNames', 'surname', 'initials'], $student_data);
-//
 // $subject_data = [];
 // for ($i = 0; $i < $_GET['subjectCount']; $i++)
 // {
