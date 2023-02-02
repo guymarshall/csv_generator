@@ -1,4 +1,6 @@
-use crate::random::{random_day, random_number, random_room};
+use crate::file::{get_first_names, get_last_names, get_middle_names};
+use crate::functions::generate_initials;
+use crate::random::{get_random_name, random_day, random_number, random_room};
 
 mod file;
 mod random;
