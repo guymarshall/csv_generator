@@ -78,7 +78,29 @@ fn main() {
     }
     //generate_csv('Room.csv', ['name', 'maximumClassSize'], $room_data);
 
+    struct Student {
+        first_name: String,
+        middle_name: String,
+        last_name: String,
+        initials: String
+    }
+    let first_name_list: Vec<String> = get_first_names();
+    let middle_name_list: Vec<String> = get_middle_names();
+    let last_name_list: Vec<String> = get_last_names();
 
+    let mut student_data: Vec<Student> = vec![];
+    for i in 0..student_count {
+        let first_name: String = get_random_name(&first_name_list);
+        let middle_name: String = get_random_name(&middle_name_list);
+        let last_name: String = get_random_name(&last_name_list);
+
+        student_data.push(Student {
+            first_name: first_name.clone(),
+            middle_name: middle_name.clone(),
+            last_name: last_name.clone(),
+            initials: generate_initials(&first_name, &middle_name, &last_name)
+        })
+    }
     //generate_csv('Student.csv', ['firstName', 'middleNames', 'surname', 'initials'], $student_data);
 
 
