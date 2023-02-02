@@ -8,7 +8,7 @@ pub fn random_number(min: i32, max: i32) -> i32 {
     range.sample(&mut rng)
 }
 
-pub fn get_random_name(names: &Vec<&str>) -> String {
+pub fn get_random_name(names: &Vec<String>) -> String {
     let mut rng: ThreadRng = thread_rng();
     let range: Uniform<usize> = Uniform::new(0, names.len());
     let index: usize = rng.sample(range);
