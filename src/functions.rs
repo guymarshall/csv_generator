@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::path::Path;
 
-pub fn generate_initials(first_name: &str, middle_name: &str, last_name: &str) -> String {
+pub fn generate_initials(first_name: &String, middle_name: &String, last_name: &String) -> String {
     let mut result: String = String::new();
 
     if !first_name.is_empty() {
