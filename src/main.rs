@@ -113,48 +113,46 @@ fn main() {
     //generate_csv('TeacherType.csv', ['name', 'displayName'], $teacher_type_data);
 }
 
-
-// APP
 /*
-// $subject_data = [];
-// for ($i = 0; $i < $_GET['subjectCount']; $i++)
-// {
-//     $subject_data[] = [
-//         get_random_name('middle-names.txt'),
-//         random_number(7, 13),
-//         random_number(1, 8),
-//         random_number(15, 31),
-//         random_number(1, 8)
-//     ];
-// }
-// generate_csv('Subject.csv', ['subjectName', 'subjectYear', 'set', 'maximumClassSize', 'roomsTaught'], $subject_data);
-//
-// $teacher_data = [];
-// for ($i = 0; $i < $_GET['teacherCount']; $i++)
-// {
-//     $first_name = get_random_name('first-names.txt');
-//     $middle_name = get_random_name('middle-names.txt');
-//     $last_name = get_random_name('middle-names.txt');
-//
-//     $teacher_data[] = [
-//         $first_name,
-//         $middle_name,
-//         $last_name,
-//         generate_initials($first_name, $middle_name, $last_name),
-//         random_number(0, 100),
-//         generate_random_length_random_array(),
-//         generate_random_length_random_array()
-//     ];
-// }
-// generate_csv('Teacher.csv', ['firstName', 'middleName', 'surname', 'initials', 'teacherTypeID', 'subjectTaughtIDs', 'roomTaughtIDs'], $teacher_data);
-//
-// $teacher_type_data = [];
-// for ($i = 0; $i < $_GET['teacherTypeCount']; $i++)
-// {
-//     $teacher_type_data[] = [
-//         random_teacher_type('name'),
-//         random_teacher_type('displayName')
-//     ];
-// }
-// generate_csv('TeacherType.csv', ['name', 'displayName'], $teacher_type_data);
+$subject_data = [];
+for ($i = 0; $i < $_GET['subjectCount']; $i++)
+{
+    $subject_data[] = [
+        get_random_name('middle-names.txt'),
+        random_number(7, 13),
+        random_number(1, 8),
+        random_number(15, 31),
+        random_number(1, 8)
+    ];
+}
+generate_csv('Subject.csv', ['subjectName', 'subjectYear', 'set', 'maximumClassSize', 'roomsTaught'], $subject_data);
+
+$teacher_data = [];
+for ($i = 0; $i < $_GET['teacherCount']; $i++)
+{
+    $first_name = get_random_name('first-names.txt');
+    $middle_name = get_random_name('middle-names.txt');
+    $last_name = get_random_name('middle-names.txt');
+
+    $teacher_data[] = [
+        $first_name,
+        $middle_name,
+        $last_name,
+        generate_initials($first_name, $middle_name, $last_name),
+        random_number(0, 100),
+        generate_random_length_random_array(),
+        generate_random_length_random_array()
+    ];
+}
+generate_csv('Teacher.csv', ['firstName', 'middleName', 'surname', 'initials', 'teacherTypeID', 'subjectTaughtIDs', 'roomTaughtIDs'], $teacher_data);
+
+$teacher_type_data = [];
+for ($i = 0; $i < $_GET['teacherTypeCount']; $i++)
+{
+    $teacher_type_data[] = [
+        random_teacher_type('name'),
+        random_teacher_type('displayName')
+    ];
+}
+generate_csv('TeacherType.csv', ['name', 'displayName'], $teacher_type_data);
 */
