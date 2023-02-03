@@ -130,19 +130,6 @@ fn main() {
 }
 
 /*
-$subject_data = [];
-for ($i = 0; $i < $_GET['subjectCount']; $i++)
-{
-    $subject_data[] = [
-        get_random_name('middle-names.txt'),
-        random_number(7, 13),
-        random_number(1, 8),
-        random_number(15, 31),
-        random_number(1, 8)
-    ];
-}
-generate_csv('Subject.csv', ['subjectName', 'subjectYear', 'set', 'maximumClassSize', 'roomsTaught'], $subject_data);
-
 $teacher_data = [];
 for ($i = 0; $i < $_GET['teacherCount']; $i++)
 {
