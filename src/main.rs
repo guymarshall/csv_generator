@@ -103,7 +103,23 @@ fn main() {
     }
     //generate_csv('Student.csv', ['firstName', 'middleNames', 'surname', 'initials'], $student_data);
 
-
+    struct Subject {
+        subject_name: String,
+        subject_year: i32,
+        set: i32,
+        maximum_class_size: i32,
+        rooms_taught: i32
+    }
+    let mut subject_data: Vec<Subject> = vec![];
+    for i in 0..subject_count {
+        subject_data.push(Subject {
+            subject_name: get_random_name(&middle_name_list),
+            subject_year: random_number(7, 13),
+            set: random_number(1, 8),
+            maximum_class_size: random_number(15, 31),
+            rooms_taught: random_number(1, 8)
+        })
+    }
     //generate_csv('Subject.csv', ['subjectName', 'subjectYear', 'set', 'maximumClassSize', 'roomsTaught'], $subject_data);
 
 
