@@ -29,3 +29,20 @@ pub fn get_middle_names() -> Vec<String> {
 pub fn get_last_names() -> Vec<String> {
     file_to_vector("last_names.txt")
 }
+
+/*
+def file_to_list(filename: str):
+    try:
+        with open(filename) as file:
+            words = [word.strip() for word in file]
+    except FileNotFoundError:
+        print(f"Error: The file '{filename}' does not exist.")
+        return []
+    return words
+
+def get_names(filename: str):
+    first_names = file_to_list(filename)
+    if not first_names:
+        raise Exception(f"Error: The file '{filename}' does not exist or is empty.")
+    return first_names
+*/

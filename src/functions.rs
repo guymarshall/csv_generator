@@ -37,3 +37,37 @@ pub fn generate_csv(filename: &str, field_headings: &[&str], data: &[Vec<&str>])
         }
     }
 }
+
+/*
+def generate_initials(first_name: str, middle_name: str, last_name: str) -> str:
+    return f"{first_name[0]}{middle_name[0]}{last_name[0]}"
+
+def generate_csv(filename: str, field_headings: list[str], data: list[object]) -> None:
+    try:
+        with open(filename, "w") as file:
+            headings = ",".join(field_headings)
+            file.write(headings + "\n")
+
+            for record in data:
+                if type(record) == str:
+                    record = add_quotes(record)
+                line = ",".join(record)
+                file.write(line + "\n")
+    except FileNotFoundError as e:
+        print(f"File not found: {e}")
+    except PermissionError as e:
+        print(f"Permission error: {e}")
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+
+def add_quotes(s: str) -> str:
+    return f'"{s}"'
+
+def get_count(prompt: str) -> int:
+    count = int(input(prompt))
+    if count <= 0:
+        print("Count must be greater than 0. Quitting program.")
+        quit()
+    return count
+
+*/
