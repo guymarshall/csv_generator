@@ -1,3 +1,5 @@
+use std::process::exit;
+
 use crate::file::{get_first_names, get_last_names, get_middle_names};
 use crate::functions::generate_initials;
 use crate::random::{get_random_name, random_day, random_number, random_room};
@@ -24,7 +26,8 @@ fn main() {
         || subject_count < 1
         || teacher_count < 1
         || teacher_type_count < 1 {
-        panic!("All counts must be more than 0");
+        println!("All counts must be more than 0");
+        exit(0);
     }
 
     const FILES: &[(&str, &[&str])] = &[
