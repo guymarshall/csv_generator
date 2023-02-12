@@ -132,6 +132,8 @@ fn main() {
     //generate_csv('TeacherType.csv', ['name', 'displayName'], $teacher_type_data);
 }
 
+// WARNING - THERE IS A BUG WITH THE GENERATION OF CSV FILES, FOR EXAMPLE ENTERING 1000 STUDENTS CREATES 999 INSTEAD OF 1000 (I FORGOT THE TITLE ROW FOR THE CSV COUNTS)
+
 /*
 import random
 from functions import generate_csv, generate_initials, generate_random_length_random_list, get_count, get_names, get_random_name, random_day, random_room, random_teacher_type
