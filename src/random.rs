@@ -35,7 +35,7 @@ pub fn random_room() -> &'static str {
     &rooms[rng.gen_range(range)]
 }
 
-pub fn generate_random_length_random_vector() -> Vec<i32> {
+pub fn random_length_random_vector() -> Vec<i32> {
     let mut rng: ThreadRng = thread_rng();
     let length_range: RangeInclusive<usize> = 1..=11;
     let length: usize = rng.gen_range(length_range);
