@@ -16,3 +16,16 @@ pub fn get_user_input(prompt: &str) -> Result<i32, Box<dyn Error>> {
 
     Ok(number)
 }
+
+fn input(prompt: &str) -> i32 {
+    loop {
+        match get_user_input(prompt) {
+            Ok(count) => {
+                return count;
+            },
+            Err(error) => {
+                println!("Error: {}", error);
+            },
+        };
+    }
+}
