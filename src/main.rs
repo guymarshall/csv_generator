@@ -2,7 +2,7 @@ use std::process::exit;
 
 use crate::file::{get_first_names, get_last_names, get_middle_names};
 use crate::functions::generate_initials;
-use crate::random::{get_random_name, random_day, random_number, random_room};
+use crate::random::{random_name, random_day, random_number, random_room};
 
 mod file;
 mod random;
@@ -82,9 +82,9 @@ fn main() {
 
     let mut student_data: Vec<Student> = vec![];
     for i in 0..student_count {
-        let first_name: String = get_random_name(&first_name_list);
-        let middle_name: String = get_random_name(&middle_name_list);
-        let last_name: String = get_random_name(&last_name_list);
+        let first_name: String = random_name(&first_name_list);
+        let middle_name: String = random_name(&middle_name_list);
+        let last_name: String = random_name(&last_name_list);
 
         student_data.push(Student {
             first_name: first_name.clone(),
@@ -105,7 +105,7 @@ fn main() {
     let mut subject_data: Vec<Subject> = vec![];
     for i in 0..subject_count {
         subject_data.push(Subject {
-            subject_name: get_random_name(&middle_name_list),
+            subject_name: random_name(&middle_name_list),
             subject_year: random_number(7, 13),
             set: random_number(1, 8),
             maximum_class_size: random_number(15, 31),
@@ -125,7 +125,7 @@ fn main() {
 
 /*
 import random
-from functions import generate_csv, generate_initials, generate_random_length_random_list, get_count, get_names, get_random_name, random_day, random_room, random_teacher_type
+from functions import generate_csv, generate_initials, generate_random_length_random_list, get_count, get_names, random_name, random_day, random_room, random_teacher_type
 
 
 csv_fields = {
@@ -251,9 +251,9 @@ def main():
 	]
 	student_data = []
 	for i in range(0, student_count):
-		first_name = get_random_name(first_names)
-		middle_name = get_random_name(middle_names)
-		last_name = get_random_name(last_names)
+		first_name = random_name(first_names)
+		middle_name = random_name(middle_names)
+		last_name = random_name(last_names)
 		student_data.append([
 			str(i + 1),
 			first_name,
@@ -297,9 +297,9 @@ def main():
 	]
 	teacher_data = []
 	for i in range(0, teacher_count):
-		first_name = get_random_name(first_names)
-		middle_name = get_random_name(middle_names)
-		last_name = get_random_name(last_names)
+		first_name = random_name(first_names)
+		middle_name = random_name(middle_names)
+		last_name = random_name(last_names)
 		teacher_data.append([
 			i + 1,
 			first_name,
