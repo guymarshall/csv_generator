@@ -19,17 +19,6 @@ fn main() {
     let teacher_count: i32 = user_input::input("Teacher Count:");
     let teacher_type_count: i32 = user_input::input("Teacher Type Count:");
 
-    if curriculum_count < 1
-        || period_schedule_count < 1
-        || room_count < 1
-        || student_count < 1
-        || subject_count < 1
-        || teacher_count < 1
-        || teacher_type_count < 1 {
-        println!("All counts must be more than 0");
-        exit(0);
-    }
-
     const FILES: &[(&str, &[&str])] = &[
         ("curriculum", &["studentID", "subjectID", "numberOfLessonsPerWeek"]),
         ("period_schedule", &["dayOfWeek", "numberOfPeriods"]),
