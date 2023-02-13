@@ -49,14 +49,14 @@ pub fn generate_random_length_random_vector() -> Vec<i32> {
     output
 }
 
-pub fn random_teacher_type(type_: &str) -> &str {
+pub fn random_teacher_type(type_type: &str) -> &str {
     let names: [&str; 4] = ["Teacher", "Cover Teacher", "Trainee Teacher", "Head of Department"];
     let display_names: [&str; 4] = ["Teacher", "Cover", "Trainee", "Head"];
 
     let mut rng: ThreadRng = thread_rng();
     let range: Range<usize> = 0..names.len();
 
-    match type_ {
+    match type_type {
         "name" => &names[rng.gen_range(range)],
         "displayName" => &display_names[rng.gen_range(range)],
         _ => &names[0],
