@@ -19,15 +19,15 @@ fn main() {
     let teacher_count: i32 = user_input::input("Teacher Count:");
     let teacher_type_count: i32 = user_input::input("Teacher Type Count:");
 
-    const FILES: &[(&str, &[&str])] = &[
-        ("curriculum", &["studentID", "subjectID", "numberOfLessonsPerWeek"]),
-        ("period_schedule", &["dayOfWeek", "numberOfPeriods"]),
-        ("room", &["name", "maximumClassSize"]),
-        ("student", &["firstName", "middleNames", "surname", "initials"]),
-        ("subject", &["subjectName", "subjectYear", "set", "maximumClassSize", "roomsTaught"]),
-        ("teacher", &["firstName", "middleName", "surname", "initials", "teacherTypeID", "subjectTaughtIDs", "roomTaughtIDs"]),
-        ("teacher_type", &["name", "displayName"]),
-    ];
+    const CSV_FIELDS: &[(&str, &[&str])] = &[
+		("curriculum", &["id", "studentID", "subjectID", "numberOfLessonsPerWeek"]),
+		("period_schedule", &["id", "dayOfWeek", "numberOfPeriods"]),
+		("room", &["id", "name", "maximumClassSize", "subjectsTaught", "teachers"]),
+		("student", &["id", "firstName", "middleNames", "surname", "initials"]),
+		("subject", &["id", "subjectName", "subjectYear", "set", "maximumClassSize", "teachers", "roomsTaught"]),
+		("teacher", &["id", "firstName", "middleNames", "surname", "initials", "teacherType", "subjectsTaught", "roomsTaught"]),
+		("teacher_type", &["id", "name", "displayName"]),
+	];
 
     struct Curriculum {
         index: String,
