@@ -16,7 +16,7 @@ pub fn random_name(names: &Vec<String>) -> String {
 }
 
 pub fn random_day(include_weekends: bool) -> String {
-    let days_of_week: [&str; 5] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+    let days_of_week: [&str; 5] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     let mut rng: ThreadRng = thread_rng();
     let range: Uniform<usize> = if include_weekends {
         Uniform::new(0, 7)
