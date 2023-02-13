@@ -1,13 +1,18 @@
 use std::io;
+use std::error::Error;
 
-pub fn get_user_input(prompt: &str) -> i32 {
+pub fn get_user_input(prompt: &str) -> Result<i32, Box<dyn Error>> {
     println!("{}", prompt);
 
-    let mut user_input: String = String::new();
+    let mut user_input = String::new();
 
-    io::stdin().read_line(&mut user_input).expect("Failed to read line");
+    io::stdin().read_line(&mut user_input)?;
 
-    let number: i32 = user_input.trim().parse().expect("Please enter an integer!");
+    let number = user_input.trim().parse().map_err(|_| "Please enter a valid integer!")?;
 
-    return number;
+    if number <= 0 {
+        return Err(From::from("The number must be greater than 0!"));
+    }
+
+    Ok(number)
 }
