@@ -122,8 +122,6 @@ fn main() {
     //generate_csv('TeacherType.csv', ['name', 'displayName'], $teacher_type_data);
 }
 
-// WARNING - THERE IS A BUG WITH THE GENERATION OF CSV FILES, FOR EXAMPLE ENTERING 1000 STUDENTS CREATES 999 INSTEAD OF 1000 (I FORGOT THE TITLE ROW FOR THE CSV COUNTS)
-
 /*
 import random
 from functions import generate_csv, generate_initials, generate_random_length_random_list, get_count, get_names, random_name, random_day, random_room, random_teacher_type
@@ -202,7 +200,7 @@ def main():
 		"numberOfLessonsPerWeek" # int
 	]
 	curriculum_data = []
-	for i in range(0, curriculum_count):
+	for i in range(0, curriculum_count + 1):
 		curriculum_data.append([
 			i + 1,
 			random.randint(1, student_count + 1),
@@ -217,7 +215,7 @@ def main():
 		"numberOfPeriods" # int
 	]
 	period_schedule_data = []
-	for i in range(0, period_schedule_count):
+	for i in range(0, period_schedule_count + 1):
 		period_schedule_data.append([
 			i + 1,
 			random_day(),
@@ -233,7 +231,7 @@ def main():
 		"teachers" # ?
 	]
 	room_data = []
-	for i in range(0, room_count):
+	for i in range(0, room_count + 1):
 		room_data.append([
 			i + 1,
 			random_room(),
@@ -251,7 +249,7 @@ def main():
 		"initials" # str
 	]
 	student_data = []
-	for i in range(0, student_count):
+	for i in range(0, student_count + 1):
 		first_name = random_name(first_names)
 		middle_name = random_name(middle_names)
 		last_name = random_name(last_names)
@@ -274,7 +272,7 @@ def main():
 		"roomsTaught" # list[int] quoted e.g. "2, 3, 4, 5"
 	]
 	subject_data = []
-	for i in range(0, subject_count):
+	for i in range(0, subject_count + 1):
 		subject_data.append([
 			i + 1,
 			# subjectName
@@ -297,7 +295,7 @@ def main():
 		"roomsTaught" # list[int] quoted e.g. "2, 3, 4, 5"
 	]
 	teacher_data = []
-	for i in range(0, teacher_count):
+	for i in range(0, teacher_count + 1):
 		first_name = random_name(first_names)
 		middle_name = random_name(middle_names)
 		last_name = random_name(last_names)
@@ -319,7 +317,7 @@ def main():
 		"displayName" # str
 	]
 	teacher_type_data = []
-	for i in range(0, teacher_type_count):
+	for i in range(0, teacher_type_count + 1):
 		teacher_type_data.append([
 			i + 1,
 			random_teacher_type("name"),
