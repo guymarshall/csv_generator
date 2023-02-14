@@ -1,3 +1,5 @@
+#![forbid(unsafe_code)]
+
 use std::process::exit;
 
 use crate::file::{get_first_names, get_last_names, get_middle_names};
