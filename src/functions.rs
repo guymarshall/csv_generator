@@ -43,8 +43,3 @@ pub fn generate_csv(filename: &str, field_headings: &[&str], data: &[Vec<&str>])
         }
     }
 }
-
-/*
-def add_quotes(s: str) -> str:
-    return f'"{s}"'
-*/
