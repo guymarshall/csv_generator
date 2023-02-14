@@ -1,6 +1,6 @@
 #![forbid(unsafe_code)]
 
-use crate::file::{get_first_names, get_last_names, get_middle_names};
+use crate::file::{get_names};
 use crate::functions::generate_initials;
 use crate::random::{random_name, random_day, random_number, random_room};
 
@@ -76,9 +76,18 @@ fn main() {
         last_name: String,
         initials: String
     }
-    let first_name_list: Vec<String> = get_first_names();
-    let middle_name_list: Vec<String> = get_middle_names();
-    let last_name_list: Vec<String> = get_last_names();
+    let first_name_list: Vec<String> = get_names("first_names.txt").unwrap_or_else(|_| {
+		println!("Failed to read \"first_names.txt\"!");
+		std::process::exit(1);
+	});
+    let middle_name_list: Vec<String> = get_names("middle_names.txt").unwrap_or_else(|_| {
+		println!("Failed to read \"middle_names.txt\"!");
+		std::process::exit(1);
+	});
+    let last_name_list: Vec<String> = get_names("last_names.txt").unwrap_or_else(|_| {
+		println!("Failed to read \"last_names.txt\"!");
+		std::process::exit(1);
+	});
 
     let mut student_data: Vec<Student> = vec![];
     for i in 0..student_count {
