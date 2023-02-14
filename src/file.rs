@@ -1,24 +1,21 @@
 #![forbid(unsafe_code)]
 
 use std::fs::File;
-use std::io::{BufRead, BufReader};
+use std::io::{BufRead, BufReader, Error};
 
-fn file_to_vector(filename: &str) -> Vec<String> {
-    let file: File = match File::open(filename) {
-        Ok(file) => file,
-        Err(error) => panic!("Couldn't open file: {}", error),
-    };
-
+fn file_to_vector(filename: &str) -> Result<Vec<String>, Error> {
+    let file: File = File::open(filename)?;
     let reader: BufReader<File> = BufReader::new(file);
     let mut words: Vec<String> = Vec::new();
 
     for line in reader.lines() {
-        let word: String = line.unwrap();
+        let word: String = line?;
         words.push(word);
     }
 
-    words
+    Ok(words)
 }
+
 
 pub fn get_first_names() -> Vec<String> {
     file_to_vector("first_names.txt")
