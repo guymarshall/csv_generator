@@ -29,6 +29,19 @@ fn main() {
 		("teacher_type", &["id", "name", "displayName"]),
 	];
 
+	let first_name_list: Vec<String> = get_names("first_names.txt").unwrap_or_else(|_| {
+		println!("Failed to read \"first_names.txt\"!");
+		std::process::exit(1);
+	});
+    let middle_name_list: Vec<String> = get_names("middle_names.txt").unwrap_or_else(|_| {
+		println!("Failed to read \"middle_names.txt\"!");
+		std::process::exit(1);
+	});
+    let last_name_list: Vec<String> = get_names("last_names.txt").unwrap_or_else(|_| {
+		println!("Failed to read \"last_names.txt\"!");
+		std::process::exit(1);
+	});
+
     struct Curriculum {
         index: String,
         subject_id: i32,
@@ -76,18 +89,6 @@ fn main() {
         last_name: String,
         initials: String
     }
-    let first_name_list: Vec<String> = get_names("first_names.txt").unwrap_or_else(|_| {
-		println!("Failed to read \"first_names.txt\"!");
-		std::process::exit(1);
-	});
-    let middle_name_list: Vec<String> = get_names("middle_names.txt").unwrap_or_else(|_| {
-		println!("Failed to read \"middle_names.txt\"!");
-		std::process::exit(1);
-	});
-    let last_name_list: Vec<String> = get_names("last_names.txt").unwrap_or_else(|_| {
-		println!("Failed to read \"last_names.txt\"!");
-		std::process::exit(1);
-	});
 
     let mut student_data: Vec<Student> = vec![];
     for i in 0..student_count {
