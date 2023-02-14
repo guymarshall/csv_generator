@@ -24,6 +24,7 @@ fn add_quotes(input: &str) -> String {
     format!("\"{}\"", input)
 }
 
+// WRITE SEPARATE GENERATE_CSV FUNCTIONS, ONE FOR EACH CSV FILE (TO GET AROUND DATATYPES BEING DIFFERENT)
 pub fn generate_csv(filename: &str, field_headings: &[&str], data: &[Vec<&str>]) {
     let path: &Path = Path::new(filename);
     let mut file: File = match File::create(&path) {
