@@ -20,6 +20,10 @@ pub fn generate_initials(first_name: &String, middle_name: &String, last_name: &
     result
 }
 
+fn add_quotes(input: &str) -> String {
+    format!("\"{}\"", input)
+}
+
 pub fn generate_csv(filename: &str, field_headings: &[&str], data: &[Vec<&str>]) {
     let path: &Path = Path::new(filename);
     let mut file: File = match File::create(&path) {
