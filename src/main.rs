@@ -29,18 +29,9 @@ fn main() {
 		("teacher_type", &["id", "name", "displayName"]),
 	];
 
-	let first_name_list: Vec<String> = get_names("first_names.txt").unwrap_or_else(|_| {
-		println!("Failed to read \"first_names.txt\"!");
-		std::process::exit(1);
-	});
-    let middle_name_list: Vec<String> = get_names("middle_names.txt").unwrap_or_else(|_| {
-		println!("Failed to read \"middle_names.txt\"!");
-		std::process::exit(1);
-	});
-    let last_name_list: Vec<String> = get_names("last_names.txt").unwrap_or_else(|_| {
-		println!("Failed to read \"last_names.txt\"!");
-		std::process::exit(1);
-	});
+	let first_name_list: Vec<String> = get_names("first_names.txt");
+    let middle_name_list: Vec<String> = get_names("middle_names.txt");
+    let last_name_list: Vec<String> = get_names("last_names.txt");
 
     struct Curriculum {
         index: String,
