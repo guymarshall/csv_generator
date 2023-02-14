@@ -16,15 +16,6 @@ fn file_to_vector(filename: &str) -> Result<Vec<String>, Error> {
     Ok(words)
 }
 
-
-pub fn get_first_names() -> Result<Vec<String>, Error> {
-    file_to_vector("first_names.txt")
-}
-
-pub fn get_middle_names() -> Result<Vec<String>, Error> {
-    file_to_vector("middle_names.txt")
-}
-
-pub fn get_last_names() -> Result<Vec<String>, Error> {
-    file_to_vector("last_names.txt")
+pub fn get_names(filename: &str) -> Result<Vec<String>, Error> {
+    file_to_vector(filename)
 }
