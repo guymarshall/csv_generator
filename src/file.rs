@@ -16,6 +16,9 @@ fn file_to_vector(filename: &str) -> Result<Vec<String>, Error> {
     Ok(words)
 }
 
-pub fn get_names(filename: &str) -> Result<Vec<String>, Error> {
-    file_to_vector(filename)
+pub fn get_names(filename: &str) -> Vec<String> {
+    file_to_vector(filename).unwrap_or_else(|error| {
+        eprintln!("An error occurred when trying to open the file: {}", error);
+        std::process::exit(1);
+    })
 }
