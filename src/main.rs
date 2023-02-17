@@ -19,16 +19,6 @@ fn main() {
     let teacher_count: i32 = user_input::input("Teacher Count:");
     let teacher_type_count: i32 = user_input::input("Teacher Type Count:");
 
-    const CSV_FIELDS: &[(&str, &[&str])] = &[
-		("curriculum", &["id", "studentID", "subjectID", "numberOfLessonsPerWeek"]),
-		("period_schedule", &["id", "dayOfWeek", "numberOfPeriods"]),
-		("room", &["id", "name", "maximumClassSize", "subjectsTaught", "teachers"]),
-		("student", &["id", "firstName", "middleNames", "surname", "initials"]),
-		("subject", &["id", "subjectName", "subjectYear", "set", "maximumClassSize", "teachers", "roomsTaught"]),
-		("teacher", &["id", "firstName", "middleNames", "surname", "initials", "teacherType", "subjectsTaught", "roomsTaught"]),
-		("teacher_type", &["id", "name", "displayName"]),
-	];
-
 	let first_name_list: Vec<String> = get_names("first_names.txt");
     let middle_name_list: Vec<String> = get_names("middle_names.txt");
     let last_name_list: Vec<String> = get_names("last_names.txt");
