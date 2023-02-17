@@ -34,10 +34,6 @@ fn main() {
     }
 	generate_curriculum_csv("Curriculum.csv", vec!["ID", "StudentID", "SubjectID", "NumberOfLessonsPerWeek"], curriculum_data);
 
-    struct PeriodSchedule {
-        day_of_week: String,
-        number_of_periods: i32
-    }
     let mut period_schedule_data: Vec<PeriodSchedule> = vec![];
     for i in 0..period_schedule_count {
         period_schedule_data.push(PeriodSchedule {
@@ -47,10 +43,6 @@ fn main() {
     }
     //generate_csv('PeriodSchedule.csv', ['dayOfWeek', 'numberOfPeriods'], $period_schedule_data);
 
-    struct Room {
-        name: String,
-        maximum_class_size: i32
-    }
     let mut room_data: Vec<Room> = vec![];
     for i in 0..room_count {
         room_data.push(Room {
@@ -59,13 +51,6 @@ fn main() {
         })
     }
     //generate_csv('Room.csv', ['name', 'maximumClassSize'], $room_data);
-
-    struct Student {
-        first_name: String,
-        middle_name: String,
-        last_name: String,
-        initials: String
-    }
 
     let mut student_data: Vec<Student> = vec![];
     for i in 0..student_count {
@@ -82,13 +67,6 @@ fn main() {
     }
     //generate_csv('Student.csv', ['firstName', 'middleNames', 'surname', 'initials'], $student_data);
 
-    struct Subject {
-        subject_name: String,
-        subject_year: i32,
-        set: i32,
-        maximum_class_size: i32,
-        rooms_taught: i32
-    }
     let mut subject_data: Vec<Subject> = vec![];
     for i in 0..subject_count {
         subject_data.push(Subject {
