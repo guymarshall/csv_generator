@@ -32,7 +32,7 @@ fn main() {
 			random_number(1, 9)
 		]);
     }
-	generate_curriculum_csv("Curriculum.csv", vec!["studentID", "subjectID", "numberOfLessonsPerWeek"], curriculum_data);
+	generate_curriculum_csv("Curriculum.csv", vec!["ID", "StudentID", "SubjectID", "NumberOfLessonsPerWeek"], curriculum_data);
 
     struct PeriodSchedule {
         day_of_week: String,
