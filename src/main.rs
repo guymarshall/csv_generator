@@ -1,7 +1,7 @@
 #![forbid(unsafe_code)]
 
 use crate::file::{get_names};
-use crate::functions::generate_initials;
+use crate::functions::{generate_initials, generate_curriculum_csv};
 use crate::random::{random_name, random_day, random_number, random_room};
 
 mod file;
@@ -32,7 +32,7 @@ fn main() {
 			random_number(1, 9)
 		]);
     }
-    //generate_csv('Curriculum.csv', ['studentID', 'subjectID', 'numberOfLessonsPerWeek'], $curriculum_data);
+	generate_curriculum_csv("Curriculum.csv", vec!["studentID", "subjectID", "numberOfLessonsPerWeek"], curriculum_data);
 
     struct PeriodSchedule {
         day_of_week: String,
