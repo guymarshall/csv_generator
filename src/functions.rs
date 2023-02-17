@@ -26,7 +26,7 @@ fn add_quotes(input: &str) -> String {
 
 // WRITE SEPARATE GENERATE_CSV FUNCTIONS, ONE FOR EACH CSV FILE (TO GET AROUND DATATYPES BEING DIFFERENT)
 
-pub fn generate_curriculum_csv(filename: &str, field_headings: Vec<i32>, data: Vec<Vec<i32>>) {
+pub fn generate_curriculum_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Vec<i32>>) {
     let path: &Path = Path::new(filename);
     let mut file: File = match File::create(&path) {
         Err(why) => panic!("couldn't create {}: {}", path.display(), why),
