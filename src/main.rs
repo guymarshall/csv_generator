@@ -43,6 +43,23 @@ fn main() {
     }
 	generate_period_schedule_csv("PeriodSchedule.csv", vec!["ID", "DayOfWeek", "NumberOfPeriods"], period_schedule_data);
 
+	// room_fields = [
+	// 	"id", # int
+	// 	"name", # str
+	// 	"maximumClassSize", # int
+	// 	"subjectsTaught", # ?
+	// 	"teachers" # ?
+	// ]
+	// room_data = []
+	// for i in range(0, room_count + 1):
+	// 	room_data.append([
+	// 		i + 1,
+	// 		random_room(),
+	// 		random.randint(20, 32),
+	// 		# subjectsTaught
+	// 		# teachers
+	// 	])
+	// generate_csv("Room.csv", ["id", "name", "maximumClassSize", "subjectsTaught", "teachers"], room_data)
     let mut room_data: Vec<Room> = vec![];
     for i in 0..room_count {
         room_data.push(Room {
@@ -52,6 +69,26 @@ fn main() {
     }
     //generate_csv('Room.csv', ['name', 'maximumClassSize'], $room_data);
 
+	// student_fields = [
+	// 	"id", # int quoted e.g. "1"
+	// 	"firstName", # str
+	// 	"middleNames", # str
+	// 	"surname", # str
+	// 	"initials" # str
+	// ]
+	// student_data = []
+	// for i in range(0, student_count + 1):
+	// 	first_name = random_name(first_names)
+	// 	middle_name = random_name(middle_names)
+	// 	last_name = random_name(last_names)
+	// 	student_data.append([
+	// 		str(i + 1),
+	// 		first_name,
+	// 		middle_name,
+	// 		last_name,
+	// 		generate_initials(first_name, middle_name, last_name)
+	// 	])
+	// generate_csv("Student.csv", ["id", "firstName", "middleName", "surname", "initials"], student_data)
     let mut student_data: Vec<Student> = vec![];
     for i in 0..student_count {
         let first_name: String = random_name(&first_name_list);
@@ -67,6 +104,27 @@ fn main() {
     }
     //generate_csv('Student.csv', ['firstName', 'middleNames', 'surname', 'initials'], $student_data);
 
+	// subject_fields = [
+	// 	"id", # int
+	// 	"subjectName", # str
+	// 	"subjectYear", # int
+	// 	"set", # int quoted e.g "3"
+	// 	"maximumClassSize", # int
+	// 	"teachers", # ?
+	// 	"roomsTaught" # list[int] quoted e.g. "2, 3, 4, 5"
+	// ]
+	// subject_data = []
+	// for i in range(0, subject_count + 1):
+	// 	subject_data.append([
+	// 		i + 1,
+	// 		# subjectName
+	// 		random.randint(1, 5),
+	// 		str(random.randint(1, 8)),
+	// 		random.randint(20, 32),
+	// 		# teachers
+	// 		# roomsTaught list(int) quoted e.g. "2, 3, 4, 5"
+	// 	])
+	// generate_csv("Subject.csv", ["id", "subjectName", "subjectYear", "set", "maximumClassSize", "teachers", "roomsTaught"], subject_data)
     let mut subject_data: Vec<Subject> = vec![];
     for i in 0..subject_count {
         subject_data.push(Subject {
@@ -79,113 +137,46 @@ fn main() {
     }
     //generate_csv('Subject.csv', ['subjectName', 'subjectYear', 'set', 'maximumClassSize', 'roomsTaught'], $subject_data);
 
-
+	// teacher_fields = [
+	// 	"id", # int
+	// 	"firstName", # str
+	// 	"middleNames", # str
+	// 	"surname", # str
+	// 	"initials", # str
+	// 	"teacherType", # int
+	// 	"subjectsTaught", # list[int] quoted e.g. "1, 2, 3"
+	// 	"roomsTaught" # list[int] quoted e.g. "2, 3, 4, 5"
+	// ]
+	// teacher_data = []
+	// for i in range(0, teacher_count + 1):
+	// 	first_name = random_name(first_names)
+	// 	middle_name = random_name(middle_names)
+	// 	last_name = random_name(last_names)
+	// 	teacher_data.append([
+	// 		i + 1,
+	// 		first_name,
+	// 		middle_name,
+	// 		last_name,
+	// 		generate_initials(first_name, middle_name, last_name),
+	// 		random.randint(1, teacher_type_count + 1),
+	// 		", ".join(map(str, generate_random_length_random_list())),
+	// 		", ".join(map(str, generate_random_length_random_list()))
+	// 	])
+	// generate_csv("Teacher.csv", ["id", "firstName", "middleName", "surname", "initials", "teacherTypeID", "subjectTaughtIDs", "roomTaughtIDs"], teacher_data)
     //generate_csv('Teacher.csv', ['firstName', 'middleName', 'surname', 'initials', 'teacherTypeID', 'subjectTaughtIDs', 'roomTaughtIDs'], $teacher_data);
 
-
+	// teacher_type_fields = [
+	// 	"id", # int
+	// 	"name", # str
+	// 	"displayName" # str
+	// ]
+	// teacher_type_data = []
+	// for i in range(0, teacher_type_count + 1):
+	// 	teacher_type_data.append([
+	// 		i + 1,
+	// 		random_teacher_type("name"),
+	// 		random_teacher_type("displayName")
+	// 	])
+	// generate_csv("TeacherType.csv", ["id", "name", "displayName"], teacher_type_data)
     //generate_csv('TeacherType.csv', ['name', 'displayName'], $teacher_type_data);
 }
-
-/*
-room_fields = [
-	"id", # int
-	"name", # str
-	"maximumClassSize", # int
-	"subjectsTaught", # ?
-	"teachers" # ?
-]
-room_data = []
-for i in range(0, room_count + 1):
-	room_data.append([
-		i + 1,
-		random_room(),
-		random.randint(20, 32),
-		# subjectsTaught
-		# teachers
-	])
-generate_csv("Room.csv", ["id", "name", "maximumClassSize", "subjectsTaught", "teachers"], room_data)
-
-student_fields = [
-	"id", # int quoted e.g. "1"
-	"firstName", # str
-	"middleNames", # str
-	"surname", # str
-	"initials" # str
-]
-student_data = []
-for i in range(0, student_count + 1):
-	first_name = random_name(first_names)
-	middle_name = random_name(middle_names)
-	last_name = random_name(last_names)
-	student_data.append([
-		str(i + 1),
-		first_name,
-		middle_name,
-		last_name,
-		generate_initials(first_name, middle_name, last_name)
-	])
-generate_csv("Student.csv", ["id", "firstName", "middleName", "surname", "initials"], student_data)
-
-subject_fields = [
-	"id", # int
-	"subjectName", # str
-	"subjectYear", # int
-	"set", # int quoted e.g "3"
-	"maximumClassSize", # int
-	"teachers", # ?
-	"roomsTaught" # list[int] quoted e.g. "2, 3, 4, 5"
-]
-subject_data = []
-for i in range(0, subject_count + 1):
-	subject_data.append([
-		i + 1,
-		# subjectName
-		random.randint(1, 5),
-		str(random.randint(1, 8)),
-		random.randint(20, 32),
-		# teachers
-		# roomsTaught list(int) quoted e.g. "2, 3, 4, 5"
-	])
-generate_csv("Subject.csv", ["id", "subjectName", "subjectYear", "set", "maximumClassSize", "teachers", "roomsTaught"], subject_data)
-
-teacher_fields = [
-	"id", # int
-	"firstName", # str
-	"middleNames", # str
-	"surname", # str
-	"initials", # str
-	"teacherType", # int
-	"subjectsTaught", # list[int] quoted e.g. "1, 2, 3"
-	"roomsTaught" # list[int] quoted e.g. "2, 3, 4, 5"
-]
-teacher_data = []
-for i in range(0, teacher_count + 1):
-	first_name = random_name(first_names)
-	middle_name = random_name(middle_names)
-	last_name = random_name(last_names)
-	teacher_data.append([
-		i + 1,
-		first_name,
-		middle_name,
-		last_name,
-		generate_initials(first_name, middle_name, last_name),
-		random.randint(1, teacher_type_count + 1),
-		", ".join(map(str, generate_random_length_random_list())),
-		", ".join(map(str, generate_random_length_random_list()))
-	])
-generate_csv("Teacher.csv", ["id", "firstName", "middleName", "surname", "initials", "teacherTypeID", "subjectTaughtIDs", "roomTaughtIDs"], teacher_data)
-
-teacher_type_fields = [
-	"id", # int
-	"name", # str
-	"displayName" # str
-]
-teacher_type_data = []
-for i in range(0, teacher_type_count + 1):
-	teacher_type_data.append([
-		i + 1,
-		random_teacher_type("name"),
-		random_teacher_type("displayName")
-	])
-generate_csv("TeacherType.csv", ["id", "name", "displayName"], teacher_type_data)
-*/
