@@ -1,7 +1,7 @@
 #![forbid(unsafe_code)]
 
 use crate::file::{get_names};
-use crate::functions::{generate_initials, generate_curriculum_csv};
+use crate::functions::{generate_initials, generate_curriculum_csv, generate_period_schedule_csv};
 use crate::random::{random_name, random_day, random_number, random_room};
 
 mod file;
@@ -41,7 +41,7 @@ fn main() {
             number_of_periods: random_number(1, 6)
         })
     }
-    //generate_csv('PeriodSchedule.csv', ['dayOfWeek', 'numberOfPeriods'], $period_schedule_data);
+	generate_period_schedule_csv("PeriodSchedule.csv", vec!["ID", "DayOfWeek", "NumberOfPeriods"], period_schedule_data);
 
     let mut room_data: Vec<Room> = vec![];
     for i in 0..room_count {
