@@ -87,20 +87,6 @@ fn main() {
 }
 
 /*
-period_schedule_fields = [
-	"id", # int
-	"dayOfWeek", # ?str?
-	"numberOfPeriods" # int
-]
-period_schedule_data = []
-for i in range(0, period_schedule_count + 1):
-	period_schedule_data.append([
-		i + 1,
-		random_day(),
-		random.randint(1, 10)
-	])
-generate_csv("PeriodSchedule.csv", ["id", "dayOfWeek", "numberOfPeriods"], period_schedule_data)
-
 room_fields = [
 	"id", # int
 	"name", # str
