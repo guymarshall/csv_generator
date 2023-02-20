@@ -62,12 +62,16 @@ fn main() {
 		let middle_name: String = random_name(&middle_name_list);
 		let last_name: String = random_name(&last_name_list);
 
+		let first_name_for_initials: String = first_name.clone();
+		let middle_name_for_initials: String = middle_name.clone();
+		let last_name_for_initials: String = last_name.clone();
+
 		student_data.push(vec![(
 			add_quotes(&(i + 1).to_string()),
 			first_name,
 			middle_name,
 			last_name,
-			generate_initials(first_name, middle_name, last_name)
+			generate_initials(first_name_for_initials, middle_name_for_initials, last_name_for_initials)
 		)]);
 	}
 
