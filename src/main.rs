@@ -56,20 +56,25 @@ fn main() {
     }
 	generate_room_csv("Room.csv", vec!["ID", "Name", "MaximumClassSize", "SubjectsTaught", "Teachers"], room_data);
 
-	let mut student_data: Vec<Vec<(String, &str, &str, &str, &str)>> = vec![];
-    for i in 0..student_count {
-        let first_name: String = random_name(&first_name_list);
-        let middle_name: String = random_name(&middle_name_list);
-        let last_name: String = random_name(&last_name_list);
+	let mut student_data: Vec<Vec<(String, String, String, String, String)>> = vec![];
+	for i in 0..student_count {
+		let first_name: String = random_name(&first_name_list);
+		let middle_name: String = random_name(&middle_name_list);
+		let last_name: String = random_name(&last_name_list);
 
-        student_data.push(vec![(
-			add_quotes((i + 1).to_string().as_str()),
-            &first_name,
-            &middle_name,
-            &last_name,
-            &generate_initials(&first_name, &middle_name, &last_name)
+		let first_name_for_initials: String = first_name.clone();
+		let middle_name_for_initials: String = middle_name.clone();
+		let last_name_for_initials: String = last_name.clone();
+
+		student_data.push(vec![(
+			add_quotes(&(i + 1).to_string()),
+			first_name,
+			middle_name,
+			last_name,
+			generate_initials(first_name_for_initials, middle_name_for_initials, last_name_for_initials)
 		)]);
-    }
+	}
+
     generate_student_csv("Student.csv", vec!["ID", "FirstName", "MiddleNames", "Surname", "Initials"], student_data);
 
 	let mut subject_data: Vec<Vec<(i32, &str, i32, String, i32, &str, String)>> = vec![];
