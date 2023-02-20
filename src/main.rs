@@ -1,7 +1,7 @@
 #![forbid(unsafe_code)]
 
 use crate::file::{get_names};
-use crate::functions::{generate_initials, generate_curriculum_csv, generate_period_schedule_csv, generate_room_csv, add_quotes, generate_student_csv, generate_teacher_type_csv, vector_to_string_with_quotes, generate_subject_csv};
+use crate::functions::{generate_initials, generate_curriculum_csv, generate_period_schedule_csv, generate_room_csv, add_quotes, generate_student_csv, generate_teacher_type_csv, vector_to_string_with_quotes, generate_subject_csv, generate_teacher_csv};
 use crate::random::{random_name, random_day, random_number, random_room, random_teacher_type, random_length_random_vector};
 
 mod file;
@@ -91,33 +91,28 @@ fn main() {
     }
     generate_subject_csv("Subject.csv", vec!["ID", "SubjectName", "SubjectYear", "Set", "MaximumClassSize", "RoomsTaught"], subject_data);
 
-	// teacher_fields = [
-	// 	"id", # int
-	// 	"firstName", # str
-	// 	"middleNames", # str
-	// 	"surname", # str
-	// 	"initials", # str
-	// 	"teacherType", # int
-	// 	"subjectsTaught", # list[int] quoted e.g. "1, 2, 3"
-	// 	"roomsTaught" # list[int] quoted e.g. "2, 3, 4, 5"
-	// ]
-	// teacher_data = []
-	// for i in range(0, teacher_count + 1):
-	// 	first_name = random_name(first_names)
-	// 	middle_name = random_name(middle_names)
-	// 	last_name = random_name(last_names)
-	// 	teacher_data.append([
-	// 		i + 1,
-	// 		first_name,
-	// 		middle_name,
-	// 		last_name,
-	// 		generate_initials(first_name, middle_name, last_name),
-	// 		random.randint(1, teacher_type_count + 1),
-	// 		", ".join(map(str, generate_random_length_random_list())),
-	// 		", ".join(map(str, generate_random_length_random_list()))
-	// 	])
-	// generate_csv("Teacher.csv", ["id", "firstName", "middleName", "surname", "initials", "teacherTypeID", "subjectTaughtIDs", "roomTaughtIDs"], teacher_data)
-    //generate_csv('Teacher.csv', ['firstName', 'middleName', 'surname', 'initials', 'teacherTypeID', 'subjectTaughtIDs', 'roomTaughtIDs'], $teacher_data);
+	let mut teacher_data: Vec<Vec<(i32, String, String, String, String, i32, String, String)>> = vec![];
+	for i in 0..teacher_count {
+		let first_name: String = random_name(&first_name_list);
+		let middle_name: String = random_name(&middle_name_list);
+		let last_name: String = random_name(&last_name_list);
+
+		let first_name_for_initials: String = first_name.clone();
+		let middle_name_for_initials: String = middle_name.clone();
+		let last_name_for_initials: String = last_name.clone();
+
+		teacher_data.push(vec![(
+			i + 1,
+			first_name,
+			middle_name,
+			last_name,
+			generate_initials(first_name_for_initials, middle_name_for_initials, last_name_for_initials),
+			random_number(1, teacher_type_count + 1),
+			vector_to_string_with_quotes(&random_length_random_vector()),
+			vector_to_string_with_quotes(&random_length_random_vector())
+		)]);
+	}
+	generate_teacher_csv("Teacher.csv", vec!["ID", "FirstName", "MiddleName", "Surname", "Initials", "TeacherTypeID", "SubjectTaughtIDs", "RoomTaughtIDs"], teacher_data);
 
 	let mut teacher_type_data: Vec<Vec<(i32, String, String, &str, &str)>> = vec![];
     for i in 0..room_count {
