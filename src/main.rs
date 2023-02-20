@@ -115,7 +115,7 @@ fn main() {
 	generate_teacher_csv("Teacher.csv", vec!["ID", "FirstName", "MiddleName", "Surname", "Initials", "TeacherTypeID", "SubjectTaughtIDs", "RoomTaughtIDs"], teacher_data);
 
 	let mut teacher_type_data: Vec<Vec<(i32, String, String, String, String)>> = vec![];
-    for i in 0..room_count {
+    for i in 0..teacher_type_count {
 		teacher_type_data.push(vec![(
 			i + 1,
 			random_teacher_type("name"),
