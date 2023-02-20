@@ -48,7 +48,7 @@ pub fn generate_curriculum_csv(filename: &str, field_headings: Vec<&str>, data: 
     }
 }
 
-pub fn generate_period_schedule_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Vec<(i32, &str, i32)>>) {
+pub fn generate_period_schedule_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Vec<(i32, String, i32)>>) {
     let path: &Path = Path::new(filename);
     let mut file: File = match File::create(&path) {
         Err(why) => panic!("couldn't create {}: {}", path.display(), why),
