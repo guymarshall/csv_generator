@@ -51,7 +51,7 @@ pub fn random_length_random_vector() -> Vec<i32> {
     output
 }
 
-pub fn random_teacher_type(type_type: &str) -> &str {
+pub fn random_teacher_type(type_type: &str) -> String {
     let names: [&str; 4] = ["Teacher", "Cover Teacher", "Trainee Teacher", "Head of Department"];
     let display_names: [&str; 4] = ["Teacher", "Cover", "Trainee", "Head"];
 
@@ -59,8 +59,8 @@ pub fn random_teacher_type(type_type: &str) -> &str {
     let range: Range<usize> = 0..names.len();
 
     match type_type {
-        "name" => &names[rng.gen_range(range)],
-        "displayName" => &display_names[rng.gen_range(range)],
-        _ => &names[0],
+        "name" => (&names[rng.gen_range(range)]).to_string(),
+        "displayName" => (&display_names[rng.gen_range(range)]).to_string(),
+        _ => (&names[0]).to_string(),
     }
 }
