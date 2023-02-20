@@ -26,7 +26,7 @@ fn main() {
     let mut curriculum_data: Vec<Vec<i32>> = vec![];
     for i in 0..curriculum_count {
 		curriculum_data.push(vec![
-			i,
+			i + 1,
 			random_number(1, student_count + 1),
 			random_number(1, subject_count + 1),
 			random_number(1, 9)
@@ -37,7 +37,7 @@ fn main() {
 	let mut period_schedule_data: Vec<Vec<(i32, String, i32)>> = vec![];
     for i in 0..period_schedule_count {
         period_schedule_data.push(vec![(
-			i,
+			i + 1,
             random_day(false),
             random_number(1, 6)
 		)])
@@ -63,7 +63,7 @@ fn main() {
         let last_name: String = random_name(&last_name_list);
 
         student_data.push(vec![(
-			add_quotes(i.to_string().as_str()),
+			add_quotes((i + 1).to_string().as_str()),
             &first_name,
             &middle_name,
             &last_name,
