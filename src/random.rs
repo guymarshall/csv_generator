@@ -64,3 +64,10 @@ pub fn random_teacher_type(type_type: &str) -> String {
         _ => (&names[0]).to_string(),
     }
 }
+
+pub fn random_subject_name() -> String {
+    let subjects: Vec<&str> = vec!["Maths", "Biology", "Chemistry", "Physics", "History", "Geography", "ICT", "German", "French", "DT", "PE", "English", "Personal Development", "RE"];
+    let mut rng: ThreadRng = thread_rng();
+    let index: usize = rng.gen_range(0..subjects.len());
+    subjects[index].to_string()
+}
