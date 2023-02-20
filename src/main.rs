@@ -2,7 +2,7 @@
 
 use crate::file::{get_names};
 use crate::functions::{generate_initials, generate_curriculum_csv, generate_period_schedule_csv, generate_room_csv, add_quotes, generate_student_csv, generate_teacher_type_csv, vector_to_string_with_quotes, generate_subject_csv, generate_teacher_csv};
-use crate::random::{random_name, random_day, random_number, random_room, random_teacher_type, random_length_random_vector};
+use crate::random::{random_name, random_day, random_number, random_room, random_teacher_type, random_length_random_vector, random_subject_name};
 
 mod file;
 mod random;
@@ -77,11 +77,11 @@ fn main() {
 
     generate_student_csv("Student.csv", vec!["ID", "FirstName", "MiddleNames", "Surname", "Initials"], student_data);
 
-	let mut subject_data: Vec<Vec<(i32, &str, i32, String, i32, String, String)>> = vec![];
+	let mut subject_data: Vec<Vec<(i32, String, i32, String, i32, String, String)>> = vec![];
     for i in 0..subject_count {
         subject_data.push(vec![(
             i + 1,
-			"subjectName",
+			random_subject_name(),
             random_number(7, 13),
             add_quotes(random_number(1, 8).to_string().as_str()),
             random_number(15, 31),
