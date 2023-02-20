@@ -77,7 +77,7 @@ fn main() {
 
     generate_student_csv("Student.csv", vec!["ID", "FirstName", "MiddleNames", "Surname", "Initials"], student_data);
 
-	let mut subject_data: Vec<Vec<(i32, &str, i32, String, i32, &str, String)>> = vec![];
+	let mut subject_data: Vec<Vec<(i32, &str, i32, String, i32, String, String)>> = vec![];
     for i in 0..subject_count {
         subject_data.push(vec![(
             i + 1,
@@ -85,11 +85,11 @@ fn main() {
             random_number(7, 13),
             add_quotes(random_number(1, 8).to_string().as_str()),
             random_number(15, 31),
-			"teachers",
+			vector_to_string_with_quotes(&random_length_random_vector()),
             vector_to_string_with_quotes(&random_length_random_vector())
 		)]);
     }
-    generate_subject_csv("Subject.csv", vec!["ID", "SubjectName", "SubjectYear", "Set", "MaximumClassSize", "RoomsTaught"], subject_data);
+    generate_subject_csv("Subject.csv", vec!["ID", "SubjectName", "SubjectYear", "Set", "MaximumClassSize", "Teachers", "RoomsTaught"], subject_data);
 
 	let mut teacher_data: Vec<Vec<(i32, String, String, String, String, i32, String, String)>> = vec![];
 	for i in 0..teacher_count {
