@@ -1,7 +1,7 @@
 #![forbid(unsafe_code)]
 
 use crate::file::{get_names};
-use crate::functions::{generate_initials, generate_curriculum_csv, generate_period_schedule_csv};
+use crate::functions::{generate_initials, generate_curriculum_csv, generate_period_schedule_csv, generate_room_csv};
 use crate::random::{random_name, random_day, random_number, random_room};
 
 mod file;
@@ -44,31 +44,17 @@ fn main() {
     }
 	generate_period_schedule_csv("PeriodSchedule.csv", vec!["ID", "DayOfWeek", "NumberOfPeriods"], period_schedule_data);
 
-	// room_fields = [
-	// 	"id", # int
-	// 	"name", # str
-	// 	"maximumClassSize", # int
-	// 	"subjectsTaught", # ?
-	// 	"teachers" # ?
-	// ]
-	// room_data = []
-	// for i in range(0, room_count + 1):
-	// 	room_data.append([
-	// 		i + 1,
-	// 		random_room(),
-	// 		random.randint(20, 32),
-	// 		# subjectsTaught
-	// 		# teachers
-	// 	])
-	// generate_csv("Room.csv", ["id", "name", "maximumClassSize", "subjectsTaught", "teachers"], room_data)
-    let mut room_data: Vec<Room> = vec![];
+	let mut room_data: Vec<Vec<(i32, &str, i32)>> = vec![];
     for i in 0..room_count {
-        room_data.push(Room {
-            name: random_room().parse().unwrap(),
-            maximum_class_size: random_number(15, 31)
-        })
+		room_data.push(vec![(
+			i + 1,
+			random_room(),
+            random_number(15, 31),
+			// subjectsTaught
+			// teachers
+		)]);
     }
-    //generate_csv('Room.csv', ['name', 'maximumClassSize'], $room_data);
+	generate_room_csv("Room.csv", vec!["ID", "Name", "MaximumClassSize", "SubjectsTaught", "Teachers"], room_data);
 
 	// student_fields = [
 	// 	"id", # int quoted e.g. "1"
