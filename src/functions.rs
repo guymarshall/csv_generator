@@ -24,6 +24,14 @@ pub fn add_quotes(input: &str) -> String {
     format!("\"{}\"", input)
 }
 
+pub fn vector_to_string_with_quotes<T: ToString>(input: &Vec<T>) -> String {
+    let output: String = input.iter()
+        .map(|value| add_quotes(&value.to_string()))
+        .collect::<Vec<String>>()
+        .join(", ");
+    output.trim_end().to_string()
+}
+
 // WRITE SEPARATE GENERATE_CSV FUNCTIONS, ONE FOR EACH CSV FILE (TO GET AROUND DATATYPES BEING DIFFERENT)
 
 pub fn generate_curriculum_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Vec<i32>>) {
