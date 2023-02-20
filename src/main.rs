@@ -119,14 +119,14 @@ fn main() {
 	// generate_csv("Teacher.csv", ["id", "firstName", "middleName", "surname", "initials", "teacherTypeID", "subjectTaughtIDs", "roomTaughtIDs"], teacher_data)
     //generate_csv('Teacher.csv', ['firstName', 'middleName', 'surname', 'initials', 'teacherTypeID', 'subjectTaughtIDs', 'roomTaughtIDs'], $teacher_data);
 
-	let mut teacher_type_data: Vec<Vec<(i32, String, String)>> = vec![];
+	let mut teacher_type_data: Vec<Vec<(i32, String, String, &str, &str)>> = vec![];
     for i in 0..room_count {
 		teacher_type_data.push(vec![(
 			i + 1,
 			random_teacher_type("name"),
-            random_teacher_type("displayName")
-			// subjectsTaught
-			// teachers
+            random_teacher_type("displayName"),
+			"subjectsTaught",
+			"teachers"
 		)]);
     }
 	generate_teacher_type_csv("TeacherType.csv", vec!["ID", "Name", "DisplayName"], teacher_type_data);
