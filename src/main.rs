@@ -34,12 +34,13 @@ fn main() {
     }
 	generate_curriculum_csv("Curriculum.csv", vec!["ID", "StudentID", "SubjectID", "NumberOfLessonsPerWeek"], curriculum_data);
 
-    let mut period_schedule_data: Vec<PeriodSchedule> = vec![];
+	let mut period_schedule_data: Vec<Vec<(i32, String, i32)>> = vec![];
     for i in 0..period_schedule_count {
-        period_schedule_data.push(PeriodSchedule {
-            day_of_week: random_day(false),
-            number_of_periods: random_number(1, 6)
-        })
+        period_schedule_data.push(vec![(
+			i,
+            random_day(false),
+            random_number(1, 6)
+		)])
     }
 	generate_period_schedule_csv("PeriodSchedule.csv", vec!["ID", "DayOfWeek", "NumberOfPeriods"], period_schedule_data);
 
