@@ -108,7 +108,7 @@ pub fn generate_room_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Ve
     }
 }
 
-pub fn generate_student_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Vec<(String, &str, &str, &str, &str)>>) {
+pub fn generate_student_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Vec<(String, String, String, String, String)>>) {
     let path: &Path = Path::new(filename);
     let mut file: File = match File::create(&path) {
         Err(why) => panic!("couldn't create {}: {}", path.display(), why),
