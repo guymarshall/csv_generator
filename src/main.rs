@@ -1,8 +1,8 @@
 #![forbid(unsafe_code)]
 
 use crate::file::{get_names};
-use crate::functions::{generate_initials, generate_curriculum_csv, generate_period_schedule_csv, generate_room_csv, add_quotes, generate_student_csv};
-use crate::random::{random_name, random_day, random_number, random_room};
+use crate::functions::{generate_initials, generate_curriculum_csv, generate_period_schedule_csv, generate_room_csv, add_quotes, generate_student_csv, generate_teacher_type_csv};
+use crate::random::{random_name, random_day, random_number, random_room, random_teacher_type};
 
 mod file;
 mod random;
@@ -133,18 +133,15 @@ fn main() {
 	// generate_csv("Teacher.csv", ["id", "firstName", "middleName", "surname", "initials", "teacherTypeID", "subjectTaughtIDs", "roomTaughtIDs"], teacher_data)
     //generate_csv('Teacher.csv', ['firstName', 'middleName', 'surname', 'initials', 'teacherTypeID', 'subjectTaughtIDs', 'roomTaughtIDs'], $teacher_data);
 
-	// teacher_type_fields = [
-	// 	"id", # int
-	// 	"name", # str
-	// 	"displayName" # str
-	// ]
-	// teacher_type_data = []
-	// for i in range(0, teacher_type_count + 1):
-	// 	teacher_type_data.append([
-	// 		i + 1,
-	// 		random_teacher_type("name"),
-	// 		random_teacher_type("displayName")
-	// 	])
-	// generate_csv("TeacherType.csv", ["id", "name", "displayName"], teacher_type_data)
-    //generate_csv('TeacherType.csv', ['name', 'displayName'], $teacher_type_data);
+	let mut teacher_type_data: Vec<Vec<(i32, String, String)>> = vec![];
+    for i in 0..room_count {
+		teacher_type_data.push(vec![(
+			i + 1,
+			random_teacher_type("name"),
+            random_teacher_type("displayName")
+			// subjectsTaught
+			// teachers
+		)]);
+    }
+	generate_teacher_type_csv("TeacherType.csv", vec!["ID", "Name", "DisplayName"], teacher_type_data);
 }
