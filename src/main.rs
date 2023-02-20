@@ -1,7 +1,7 @@
 #![forbid(unsafe_code)]
 
 use crate::file::{get_names};
-use crate::functions::{generate_initials, generate_curriculum_csv, generate_period_schedule_csv, generate_room_csv};
+use crate::functions::{generate_initials, generate_curriculum_csv, generate_period_schedule_csv, generate_room_csv, add_quotes, generate_student_csv};
 use crate::random::{random_name, random_day, random_number, random_room};
 
 mod file;
@@ -56,40 +56,21 @@ fn main() {
     }
 	generate_room_csv("Room.csv", vec!["ID", "Name", "MaximumClassSize", "SubjectsTaught", "Teachers"], room_data);
 
-	// student_fields = [
-	// 	"id", # int quoted e.g. "1"
-	// 	"firstName", # str
-	// 	"middleNames", # str
-	// 	"surname", # str
-	// 	"initials" # str
-	// ]
-	// student_data = []
-	// for i in range(0, student_count + 1):
-	// 	first_name = random_name(first_names)
-	// 	middle_name = random_name(middle_names)
-	// 	last_name = random_name(last_names)
-	// 	student_data.append([
-	// 		str(i + 1),
-	// 		first_name,
-	// 		middle_name,
-	// 		last_name,
-	// 		generate_initials(first_name, middle_name, last_name)
-	// 	])
-	// generate_csv("Student.csv", ["id", "firstName", "middleName", "surname", "initials"], student_data)
-    let mut student_data: Vec<Student> = vec![];
+	let mut student_data: Vec<Vec<(String, &str, &str, &str, &str)>> = vec![];
     for i in 0..student_count {
         let first_name: String = random_name(&first_name_list);
         let middle_name: String = random_name(&middle_name_list);
         let last_name: String = random_name(&last_name_list);
 
-        student_data.push(Student {
-            first_name: first_name.clone(),
-            middle_name: middle_name.clone(),
-            last_name: last_name.clone(),
-            initials: generate_initials(&first_name, &middle_name, &last_name)
-        })
+        student_data.push(vec![(
+			add_quotes(i.to_string().as_str()),
+            &first_name,
+            &middle_name,
+            &last_name,
+            &generate_initials(&first_name, &middle_name, &last_name)
+		)]);
     }
-    //generate_csv('Student.csv', ['firstName', 'middleNames', 'surname', 'initials'], $student_data);
+    generate_student_csv("Student.csv", vec!["ID", "FirstName", "MiddleNames", "Surname", "Initials"], student_data);
 
 	// subject_fields = [
 	// 	"id", # int
