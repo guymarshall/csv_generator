@@ -114,15 +114,15 @@ fn main() {
 	}
 	generate_teacher_csv("Teacher.csv", vec!["ID", "FirstName", "MiddleName", "Surname", "Initials", "TeacherTypeID", "SubjectTaughtIDs", "RoomTaughtIDs"], teacher_data);
 
-	let mut teacher_type_data: Vec<Vec<(i32, String, String, &str, &str)>> = vec![];
+	let mut teacher_type_data: Vec<Vec<(i32, String, String, String, String)>> = vec![];
     for i in 0..room_count {
 		teacher_type_data.push(vec![(
 			i + 1,
 			random_teacher_type("name"),
             random_teacher_type("displayName"),
-			"subjectsTaught",
-			"teachers"
+			vector_to_string_with_quotes(&random_length_random_vector()),
+			vector_to_string_with_quotes(&random_length_random_vector())
 		)]);
     }
-	generate_teacher_type_csv("TeacherType.csv", vec!["ID", "Name", "DisplayName"], teacher_type_data);
+	generate_teacher_type_csv("TeacherType.csv", vec!["ID", "Name", "DisplayName", "SubjectsTaught", "Teachers"], teacher_type_data);
 }
