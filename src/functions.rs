@@ -162,7 +162,7 @@ pub fn generate_subject_csv(filename: &str, field_headings: Vec<&str>, data: Vec
 
 // teacher function
 
-pub fn generate_teacher_type_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Vec<(i32, String, String)>>) {
+pub fn generate_teacher_type_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Vec<(i32, String, String, &str, &str)>>) {
     let path: &Path = Path::new(filename);
     let mut file: File = match File::create(&path) {
         Err(why) => panic!("couldn't create {}: {}", path.display(), why),
