@@ -210,23 +210,3 @@ pub fn generate_teacher_type_csv(filename: &str, field_headings: Vec<&str>, data
         }
     }
 }
-
-pub fn generate_csv(filename: &str, field_headings: &[&str], data: &[Vec<&str>]) {
-    let path: &Path = Path::new(filename);
-    let mut file: File = match File::create(&path) {
-        Err(why) => panic!("couldn't create {}: {}", path.display(), why),
-        Ok(file) => file,
-    };
-
-    let headings: String = field_headings.join(",");
-    if let Err(why) = writeln!(file, "{}", headings) {
-        panic!("couldn't write to {}: {}", path.display(), why);
-    }
-
-    for record in data {
-        let line: String = record.join(",");
-        if let Err(why) = writeln!(file, "{}", line) {
-            panic!("couldn't write to {}: {}", path.display(), why);
-        }
-    }
-}
