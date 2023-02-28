@@ -1,8 +1,29 @@
 #![forbid(unsafe_code)]
 
-use crate::file::{get_names};
-use crate::functions::{generate_initials, generate_curriculum_csv, generate_period_schedule_csv, generate_room_csv, add_quotes, generate_student_csv, generate_teacher_type_csv, vector_to_string_with_quotes, generate_subject_csv, generate_teacher_csv};
-use crate::random::{random_name, random_day, random_number, random_room, random_teacher_type, random_length_random_vector, random_subject_name};
+use crate::file::{
+	get_names
+};
+use crate::functions::{
+	generate_initials,
+	generate_curriculum_csv,
+	generate_period_schedule_csv,
+	generate_room_csv,
+	add_quotes,
+	generate_student_csv,
+	generate_teacher_type_csv,
+	vector_to_string_with_quotes,
+	generate_subject_csv,
+	generate_teacher_csv
+};
+use crate::random::{
+	random_name,
+	random_day,
+	random_number,
+	random_room,
+	random_teacher_type,
+	random_length_random_vector,
+	random_subject_name
+};
 
 mod file;
 mod random;
