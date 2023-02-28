@@ -53,7 +53,11 @@ fn main() {
 			random_number(1, 9)
 		]);
     }
-	generate_curriculum_csv("Curriculum.csv", vec!["ID", "StudentID", "SubjectID", "NumberOfLessonsPerWeek"], curriculum_data);
+	generate_curriculum_csv(
+		"Curriculum.csv",
+		vec!["ID", "StudentID", "SubjectID", "NumberOfLessonsPerWeek"],
+		curriculum_data
+	);
 
 	let mut period_schedule_data: Vec<Vec<(i32, String, i32)>> = vec![];
     for i in 0..period_schedule_count {
@@ -63,7 +67,11 @@ fn main() {
             random_number(1, 6)
 		)])
     }
-	generate_period_schedule_csv("PeriodSchedule.csv", vec!["ID", "DayOfWeek", "NumberOfPeriods"], period_schedule_data);
+	generate_period_schedule_csv(
+		"PeriodSchedule.csv",
+		vec!["ID", "DayOfWeek", "NumberOfPeriods"],
+		period_schedule_data
+	);
 
 	let mut room_data: Vec<Vec<(i32, &str, i32, String, String)>> = vec![];
     for i in 0..room_count {
@@ -75,7 +83,11 @@ fn main() {
 			vector_to_string_with_quotes(&random_length_random_vector())
 		)]);
     }
-	generate_room_csv("Room.csv", vec!["ID", "Name", "MaximumClassSize", "SubjectsTaught", "Teachers"], room_data);
+	generate_room_csv(
+		"Room.csv",
+		vec!["ID", "Name", "MaximumClassSize", "SubjectsTaught", "Teachers"],
+		room_data
+	);
 
 	let mut student_data: Vec<Vec<(String, String, String, String, String)>> = vec![];
 	for i in 0..student_count {
@@ -96,7 +108,11 @@ fn main() {
 		)]);
 	}
 
-    generate_student_csv("Student.csv", vec!["ID", "FirstName", "MiddleNames", "Surname", "Initials"], student_data);
+    generate_student_csv(
+		"Student.csv",
+		vec!["ID", "FirstName", "MiddleNames", "Surname", "Initials"],
+		student_data
+	);
 
 	let mut subject_data: Vec<Vec<(i32, String, i32, String, i32, String, String)>> = vec![];
     for i in 0..subject_count {
@@ -110,7 +126,11 @@ fn main() {
             vector_to_string_with_quotes(&random_length_random_vector())
 		)]);
     }
-    generate_subject_csv("Subject.csv", vec!["ID", "SubjectName", "SubjectYear", "Set", "MaximumClassSize", "Teachers", "RoomsTaught"], subject_data);
+    generate_subject_csv(
+		"Subject.csv",
+		vec!["ID", "SubjectName", "SubjectYear", "Set", "MaximumClassSize", "Teachers", "RoomsTaught"],
+		subject_data
+	);
 
 	let mut teacher_data: Vec<Vec<(i32, String, String, String, String, i32, String, String)>> = vec![];
 	for i in 0..teacher_count {
@@ -133,7 +153,11 @@ fn main() {
 			vector_to_string_with_quotes(&random_length_random_vector())
 		)]);
 	}
-	generate_teacher_csv("Teacher.csv", vec!["ID", "FirstName", "MiddleName", "Surname", "Initials", "TeacherTypeID", "SubjectTaughtIDs", "RoomTaughtIDs"], teacher_data);
+	generate_teacher_csv(
+		"Teacher.csv",
+		vec!["ID", "FirstName", "MiddleName", "Surname", "Initials", "TeacherTypeID", "SubjectTaughtIDs", "RoomTaughtIDs"],
+		teacher_data
+	);
 
 	let mut teacher_type_data: Vec<Vec<(i32, String, String, String, String)>> = vec![];
     for i in 0..teacher_type_count {
@@ -145,5 +169,9 @@ fn main() {
 			vector_to_string_with_quotes(&random_length_random_vector())
 		)]);
     }
-	generate_teacher_type_csv("TeacherType.csv", vec!["ID", "Name", "DisplayName", "SubjectsTaught", "Teachers"], teacher_type_data);
+	generate_teacher_type_csv(
+		"TeacherType.csv",
+		vec!["ID", "Name", "DisplayName", "SubjectsTaught", "Teachers"],
+		teacher_type_data
+	);
 }
