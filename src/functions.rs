@@ -32,8 +32,6 @@ pub fn vector_to_string_with_quotes<T: ToString>(input: &Vec<T>) -> String {
     output.trim_end().to_string()
 }
 
-// WRITE SEPARATE GENERATE_CSV FUNCTIONS, ONE FOR EACH CSV FILE (TO GET AROUND DATATYPES BEING DIFFERENT)
-
 pub fn generate_curriculum_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Vec<i32>>) {
     let path: &Path = Path::new(filename);
     let mut file: File = match File::create(&path) {
