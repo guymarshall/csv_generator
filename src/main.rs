@@ -17,7 +17,7 @@ use crate::functions::{
 };
 use crate::random::{
 	random_name,
-	random_day,
+	day_from_i32,
 	random_number,
 	random_room,
 	random_teacher_type,
@@ -63,7 +63,7 @@ fn main() {
     for i in 0..period_schedule_count {
         period_schedule_data.push(vec![(
 			i + 1,
-            random_day(false),
+            day_from_i32(i),
             random_number(1, 6)
 		)])
     }

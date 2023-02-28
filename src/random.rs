@@ -17,16 +17,9 @@ pub fn random_name(names: &Vec<String>) -> String {
     names[index].to_string()
 }
 
-pub fn random_day(include_weekends: bool) -> String {
+pub fn day_from_i32(day_int: i32) -> String {
     let days_of_week: [&str; 7] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-    let mut rng: ThreadRng = thread_rng();
-    let range: Uniform<usize> = if include_weekends {
-        Uniform::new(0, 7)
-    } else {
-        Uniform::new(0, 5)
-    };
-    let index: usize = rng.sample(range);
-    days_of_week[index].to_string()
+    days_of_week[day_int as usize].to_string()
 }
 
 pub fn random_room() -> &'static str {
