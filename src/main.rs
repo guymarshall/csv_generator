@@ -48,8 +48,8 @@ fn main() {
     for i in 0..curriculum_count {
 		curriculum_data.push(vec![
 			i + 1,
-			random_number(1, student_count + 1),
-			random_number(1, subject_count + 1),
+			random_number(1, student_count),
+			random_number(1, subject_count),
 			random_number(1, 9)
 		]);
     }
@@ -148,7 +148,7 @@ fn main() {
 			middle_name,
 			last_name,
 			generate_initials(first_name_for_initials, middle_name_for_initials, last_name_for_initials),
-			random_number(1, teacher_type_count + 1),
+			random_number(1, teacher_type_count),
 			vector_to_string_with_quotes(&random_length_random_vector()),
 			vector_to_string_with_quotes(&random_length_random_vector())
 		)]);
