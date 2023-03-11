@@ -46,12 +46,14 @@ fn main() {
 
     let mut curriculum_data: Vec<Vec<i32>> = vec![];
     for i in 0..curriculum_count {
-		curriculum_data.push(vec![
-			i + 1,
-			random_number(1, student_count),
-			random_number(1, subject_count),
-			random_number(1, 9)
-		]);
+		for j in 0..student_count {
+			curriculum_data.push(vec![
+				i + 1,
+				j + 1,
+				random_number(1, subject_count),
+				random_number(1, 9)
+			]);
+		}
     }
 	generate_curriculum_csv(
 		"Curriculum.csv",
