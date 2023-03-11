@@ -50,6 +50,8 @@ pub fn generate_curriculum_csv(filename: &str, field_headings: Vec<&str>, data: 
         let line: String = line_including_trailing_comma[0..line_including_trailing_comma.len() - 2].to_string();
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
+        } else {
+            println!("{} created successfully!", filename);
         }
     }
 }
@@ -76,6 +78,8 @@ pub fn generate_period_schedule_csv(filename: &str, field_headings: Vec<&str>, d
         let line: String = line_including_trailing_comma[0..line_including_trailing_comma.len() - 2].to_string();
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
+        } else {
+            println!("{} created successfully!", filename);
         }
     }
 }
@@ -102,6 +106,8 @@ pub fn generate_room_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Ve
         let line: String = line_including_trailing_comma[0..line_including_trailing_comma.len() - 2].to_string();
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
+        } else {
+            println!("{} created successfully!", filename);
         }
     }
 }
@@ -128,6 +134,8 @@ pub fn generate_student_csv(filename: &str, field_headings: Vec<&str>, data: Vec
         let line: String = line_including_trailing_comma[0..line_including_trailing_comma.len() - 2].to_string();
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
+        } else {
+            println!("{} created successfully!", filename);
         }
     }
 }
@@ -154,6 +162,8 @@ pub fn generate_subject_csv(filename: &str, field_headings: Vec<&str>, data: Vec
         let line: String = line_including_trailing_comma[0..line_including_trailing_comma.len() - 2].to_string();
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
+        } else {
+            println!("{} created successfully!", filename);
         }
     }
 }
@@ -180,6 +190,8 @@ pub fn generate_teacher_csv(filename: &str, field_headings: Vec<&str>, data: Vec
         let line: String = line_including_trailing_comma[0..line_including_trailing_comma.len() - 2].to_string();
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
+        } else {
+            println!("{} created successfully!", filename);
         }
     }
 }
@@ -205,6 +217,8 @@ pub fn generate_teacher_type_csv(filename: &str, field_headings: Vec<&str>, data
         let line: String = line_including_trailing_comma[0..line_including_trailing_comma.len() - 2].to_string();
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
+        } else {
+            println!("{} created successfully!", filename);
         }
     }
 }
