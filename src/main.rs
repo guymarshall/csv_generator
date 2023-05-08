@@ -162,8 +162,8 @@ fn main() {
     for i in 0..teacher_type_count {
 		teacher_type_data.push(vec![(
 			i + 1,
-			random_teacher_type("name"),
-            random_teacher_type("displayName"),
+			add_quotes(&random_teacher_type("name")),
+            add_quotes(&random_teacher_type("displayName")),
 		)]);
     }
 	generate_teacher_type_csv(
