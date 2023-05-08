@@ -101,10 +101,10 @@ fn main() {
 
 		student_data.push(vec![(
 			add_quotes(&(i + 1).to_string()),
-			first_name,
-			middle_name,
-			last_name,
-			generate_initials(first_name_for_initials, middle_name_for_initials, last_name_for_initials)
+			add_quotes(&first_name),
+			add_quotes(&middle_name),
+			add_quotes(&last_name),
+			add_quotes(&generate_initials(first_name_for_initials, middle_name_for_initials, last_name_for_initials))
 		)]);
 	}
 
