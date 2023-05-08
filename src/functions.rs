@@ -26,7 +26,7 @@ pub fn add_quotes(input: &str) -> String {
 
 pub fn vector_to_string_with_quotes<T: ToString>(input: &Vec<T>) -> String {
     let output: String = input.iter()
-        .map(|value| add_quotes(&value.to_string()))
+        .map(|value| value.to_string())
         .collect::<Vec<String>>()
         .join(", ");
     output.trim_end().to_string()
