@@ -174,7 +174,7 @@ pub fn generate_teacher_csv(filename: &str, field_headings: Vec<&str>, data: Vec
     for record in data {
         let line_including_trailing_comma: String = record
         .iter()
-        .map(|cell| format!("{}, {}, {}", cell.0, cell.1, cell.2))
+        .map(|cell| format!("{}, {}, {}, {}, {}, {}, {}, {}", cell.0, cell.1, cell.2, cell.3, cell.4, cell.5, cell.6, cell.7))
         .collect::<Vec<String>>()
         .join(",");
         let line: String = line_including_trailing_comma[0..].to_string();
