@@ -11,7 +11,7 @@ use crate::functions::{
 	add_quotes,
 	generate_student_csv,
 	generate_teacher_type_csv,
-	vector_to_string_with_quotes,
+	vector_to_unique_string_with_quotes,
 	generate_subject_csv,
 	generate_teacher_csv
 };
@@ -122,7 +122,7 @@ fn main() {
             random_number(7, 13),
             add_quotes(random_number(1, 8).to_string().as_str()),
             random_number(15, 31),
-            vector_to_string_with_quotes(&random_length_random_vector())
+            vector_to_unique_string_with_quotes(&random_length_random_vector())
 		)]);
     }
     generate_subject_csv(
@@ -148,8 +148,8 @@ fn main() {
 			add_quotes(&last_name),
 			add_quotes(&generate_initials(first_name_for_initials, middle_name_for_initials, last_name_for_initials)),
 			random_number(1, teacher_type_count),
-			vector_to_string_with_quotes(&random_length_random_vector()),
-			vector_to_string_with_quotes(&random_length_random_vector())
+			vector_to_unique_string_with_quotes(&random_length_random_vector()),
+			vector_to_unique_string_with_quotes(&random_length_random_vector())
 		)]);
 	}
 	generate_teacher_csv(
