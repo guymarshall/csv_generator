@@ -24,8 +24,13 @@ pub fn add_quotes(input: &str) -> String {
     format!("\"{}\"", input)
 }
 
-pub fn vector_to_string_with_quotes<T: ToString>(input: &Vec<T>) -> String {
-    let output: String = input.iter()
+pub fn vector_to_string_with_quotes<T: ToString + std::cmp::Eq + std::hash::Hash>(
+    input: &Vec<T>,
+) -> String {
+    let mut unique_elements: std::collections::HashSet<&T> = std::collections::HashSet::new();
+    let output: String = input
+        .iter()
+        .filter(|&value| unique_elements.insert(value))
         .map(|value| value.to_string())
         .collect::<Vec<String>>()
         .join(", ");
