@@ -80,7 +80,7 @@ pub fn generate_period_schedule_csv(filename: &str, field_headings: Vec<&str>, d
     }
 }
 
-pub fn generate_room_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Vec<(i32, &str, i32, String, String)>>) {
+pub fn generate_room_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Vec<(i32, &str, i32)>>) {
     let path: &Path = Path::new(filename);
     let mut file: File = match File::create(&path) {
         Err(why) => panic!("couldn't create {}: {}", path.display(), why),

@@ -75,19 +75,17 @@ fn main() {
 		period_schedule_data
 	);
 
-	let mut room_data: Vec<Vec<(i32, &str, i32, String, String)>> = vec![];
+	let mut room_data: Vec<Vec<(i32, &str, i32)>> = vec![];
     for i in 0..room_count {
 		room_data.push(vec![(
 			i + 1,
 			random_room(),
-            random_number(15, 31),
-			vector_to_string_with_quotes(&random_length_random_vector()),
-			vector_to_string_with_quotes(&random_length_random_vector())
+            random_number(15, 31)
 		)]);
     }
 	generate_room_csv(
 		"Room.csv",
-		vec!["ID", "Name", "MaximumClassSize", "SubjectsTaught", "Teachers"],
+		vec!["ID", "Name", "MaximumClassSize"],
 		room_data
 	);
 
