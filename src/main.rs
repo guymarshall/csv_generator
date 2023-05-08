@@ -79,7 +79,7 @@ fn main() {
     for i in 0..room_count {
 		room_data.push(vec![(
 			i + 1,
-			random_room(),
+			add_quotes(&random_room()),
             random_number(15, 31)
 		)]);
     }
