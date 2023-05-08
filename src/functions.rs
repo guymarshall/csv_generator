@@ -29,7 +29,7 @@ pub fn vector_to_string_with_quotes<T: ToString>(input: &Vec<T>) -> String {
         .map(|value| value.to_string())
         .collect::<Vec<String>>()
         .join(", ");
-    output.trim_end().to_string()
+    format!("\"{}\"", output.trim_end().to_string())
 }
 
 pub fn generate_curriculum_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Vec<i32>>) {
