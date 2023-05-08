@@ -143,10 +143,10 @@ fn main() {
 
 		teacher_data.push(vec![(
 			i + 1,
-			first_name,
-			middle_name,
-			last_name,
-			generate_initials(first_name_for_initials, middle_name_for_initials, last_name_for_initials),
+			add_quotes(&first_name),
+			add_quotes(&middle_name),
+			add_quotes(&last_name),
+			add_quotes(&generate_initials(first_name_for_initials, middle_name_for_initials, last_name_for_initials)),
 			random_number(1, teacher_type_count),
 			vector_to_string_with_quotes(&random_length_random_vector()),
 			vector_to_string_with_quotes(&random_length_random_vector())
