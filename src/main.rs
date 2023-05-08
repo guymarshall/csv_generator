@@ -118,7 +118,7 @@ fn main() {
     for i in 0..subject_count {
         subject_data.push(vec![(
             i + 1,
-			random_subject_name(),
+			add_quotes(&random_subject_name()),
             random_number(7, 13),
             add_quotes(random_number(1, 8).to_string().as_str()),
             random_number(15, 31),
