@@ -25,7 +25,6 @@ pub fn day_from_i32(day_int: i32) -> String {
         3 => "Thursday".to_string(),
         4 => "Friday".to_string(),
         5 => "Saturday".to_string(),
-        6 => "Sunday".to_string(),
         _ => "Sunday".to_string()
     }
 }
