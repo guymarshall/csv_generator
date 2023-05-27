@@ -19,13 +19,13 @@ pub fn random_name(names: &Vec<String>) -> String {
 
 pub fn day_from_i32(day_int: i32) -> String {
     match day_int {
-        1 => "Monday".to_string(),
-        2 => "Tuesday".to_string(),
-        3 => "Wednesday".to_string(),
-        4 => "Thursday".to_string(),
-        5 => "Friday".to_string(),
-        6 => "Saturday".to_string(),
-        7 => "Sunday".to_string(),
+        0 => "Monday".to_string(),
+        1 => "Tuesday".to_string(),
+        2 => "Wednesday".to_string(),
+        3 => "Thursday".to_string(),
+        4 => "Friday".to_string(),
+        5 => "Saturday".to_string(),
+        6 => "Sunday".to_string(),
         _ => "Sunday".to_string()
     }
 }
