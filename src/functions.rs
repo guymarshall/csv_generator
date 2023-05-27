@@ -24,7 +24,7 @@ pub fn add_quotes(input: &str) -> String {
     format!("\"{}\"", input)
 }
 
-pub fn vector_to_unique_string_with_quotes<T: ToString + std::cmp::Eq + std::hash::Hash>(
+pub fn vector_to_unique_string_with_quotes<T: ToString + Eq + std::hash::Hash>(
     input: &Vec<T>,
 ) -> String {
     let mut unique_elements: std::collections::HashSet<&T> = std::collections::HashSet::new();
