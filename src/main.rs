@@ -1,5 +1,7 @@
 #![forbid(unsafe_code)]
 
+use promptput::input;
+
 use crate::file::get_names;
 use crate::functions::{
     add_quotes, generate_curriculum_csv, generate_initials, generate_period_schedule_csv,
@@ -14,17 +16,16 @@ use crate::random::{
 mod file;
 mod functions;
 mod random;
-mod user_input;
 
 fn main() {
     println!("CSV Generator - Enter counts for the following prompts to generate your .CSV file.");
-    let curriculum_count: i32 = user_input::input("Curriculum Count:");
-    let period_schedule_count: i32 = user_input::input("Period Schedule Count:");
-    let room_count: i32 = user_input::input("Room Count:");
-    let student_count: i32 = user_input::input("Student Count:");
-    let subject_count: i32 = user_input::input("Subject Count:");
-    let teacher_count: i32 = user_input::input("Teacher Count:");
-    let teacher_type_count: i32 = user_input::input("Teacher Type Count:");
+    let curriculum_count: i32 = input("Curriculum Count:");
+    let period_schedule_count: i32 = input("Period Schedule Count:");
+    let room_count: i32 = input("Room Count:");
+    let student_count: i32 = input("Student Count:");
+    let subject_count: i32 = input("Subject Count:");
+    let teacher_count: i32 = input("Teacher Count:");
+    let teacher_type_count: i32 = input("Teacher Type Count:");
 
     let first_name_list: Vec<String> = get_names("first_names.txt");
     let middle_name_list: Vec<String> = get_names("middle_names.txt");
