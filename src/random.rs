@@ -1,5 +1,3 @@
-#![forbid(unsafe_code)]
-
 use rand::distributions::uniform::Uniform;
 use rand::prelude::*;
 use std::ops::{Range, RangeInclusive};

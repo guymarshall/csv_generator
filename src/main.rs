@@ -1,5 +1,3 @@
-#![forbid(unsafe_code)]
-
 use promptput::input;
 
 use crate::file::get_names;
