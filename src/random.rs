@@ -1,17 +1,12 @@
-use rand::distributions::uniform::Uniform;
 use rand::prelude::*;
 use std::ops::{Range, RangeInclusive};
 
 pub fn random_number(min: i32, max: i32) -> i32 {
-    let mut rng: ThreadRng = thread_rng();
-    let range: Uniform<i32> = Uniform::from(min..=max);
-    range.sample(&mut rng)
+    rand::thread_rng().gen_range(min..max)
 }
 
 pub fn random_name(names: &[String]) -> String {
-    let mut rng: ThreadRng = thread_rng();
-    let range: Uniform<usize> = Uniform::new(0, names.len());
-    let index: usize = rng.sample(range);
+    let index: usize = rand::thread_rng().gen_range(0..names.len());
     names[index].to_string()
 }
 
@@ -28,7 +23,7 @@ pub fn day_from_i32(day_int: i32) -> String {
 }
 
 pub fn random_room() -> &'static str {
-    let rooms: [&str; 49] = [
+    let rooms: [&str; 51] = [
         "Ma1",
         "Ma2",
         "Ma3",
@@ -65,6 +60,8 @@ pub fn random_room() -> &'static str {
         "Sc6",
         "Sc7",
         "Sc8",
+        "Sc9",
+        "Sc10",
         "Eng1",
         "Eng2",
         "Eng3",
@@ -80,9 +77,8 @@ pub fn random_room() -> &'static str {
         "PE",
     ];
 
-    let mut rng: ThreadRng = thread_rng();
-    let range: RangeInclusive<usize> = 0..=rooms.len() - 1;
-    rooms[rng.gen_range(range)]
+    let index: usize = rand::thread_rng().gen_range(0..rooms.len());
+    rooms[index]
 }
 
 pub fn random_length_random_vector() -> Vec<i32> {
@@ -126,13 +122,14 @@ pub fn random_subject_name() -> String {
         "ICT",
         "German",
         "French",
+        "Spanish",
         "DT",
         "PE",
         "English",
         "Personal Development",
         "RE",
     ];
-    let mut random_number_generator: ThreadRng = thread_rng();
-    let index: usize = random_number_generator.gen_range(0..subjects.len());
+
+    let index: usize = rand::thread_rng().gen_range(0..subjects.len());
     subjects[index].to_string()
 }
