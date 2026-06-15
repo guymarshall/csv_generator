@@ -1,6 +1,6 @@
 use promptput::input;
 
-use crate::file::get_names;
+use crate::file::file_to_vector;
 use crate::functions::{
     add_quotes, generate_curriculum_csv, generate_initials, generate_period_schedule_csv,
     generate_room_csv, generate_student_csv, generate_subject_csv, generate_teacher_csv,
@@ -25,9 +25,9 @@ fn main() {
     let teacher_count: i32 = input("Teacher Count:");
     let teacher_type_count: i32 = input("Teacher Type Count:");
 
-    let first_name_list: Vec<String> = get_names("first_names.txt");
-    let middle_name_list: Vec<String> = get_names("middle_names.txt");
-    let last_name_list: Vec<String> = get_names("last_names.txt");
+    let first_name_list: Vec<String> = file_to_vector("first_names.txt");
+    let middle_name_list: Vec<String> = file_to_vector("middle_names.txt");
+    let last_name_list: Vec<String> = file_to_vector("last_names.txt");
 
     let mut curriculum_data: Vec<Vec<i32>> = vec![];
     for i in 0..curriculum_count {
