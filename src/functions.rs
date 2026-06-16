@@ -18,7 +18,7 @@ pub fn generate_initials(first_name: String, middle_name: String, last_name: Str
     result
 }
 
-pub fn add_quotes(input: &str) -> String {
+pub fn add_quotes(input: String) -> String {
     format!("\"{}\"", input)
 }
 

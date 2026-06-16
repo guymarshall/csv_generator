@@ -111,11 +111,11 @@ fn main() {
         let last_name_for_initials: String = last_name.clone();
 
         student_data.push(vec![(
-            add_quotes(&(i + 1).to_string()),
-            add_quotes(&first_name),
-            add_quotes(&middle_name),
-            add_quotes(&last_name),
-            add_quotes(&generate_initials(
+            add_quotes((i + 1).to_string()),
+            add_quotes(first_name),
+            add_quotes(middle_name),
+            add_quotes(last_name),
+            add_quotes(generate_initials(
                 first_name_for_initials,
                 middle_name_for_initials,
                 last_name_for_initials,
@@ -133,9 +133,9 @@ fn main() {
     for i in 0..subject_count {
         subject_data.push(vec![(
             i + 1,
-            add_quotes(&random_subject_name()),
+            add_quotes(random_subject_name()),
             random_number(7, 13),
-            add_quotes(random_number(1, 8).to_string().as_str()),
+            add_quotes(random_number(1, 8).to_string()),
             random_number(15, 31),
             vector_to_unique_string_with_quotes(&random_length_random_vector()),
         )]);
@@ -166,10 +166,10 @@ fn main() {
 
         teacher_data.push(vec![(
             i + 1,
-            add_quotes(&first_name),
-            add_quotes(&middle_name),
-            add_quotes(&last_name),
-            add_quotes(&generate_initials(
+            add_quotes(first_name),
+            add_quotes(middle_name),
+            add_quotes(last_name),
+            add_quotes(generate_initials(
                 first_name_for_initials,
                 middle_name_for_initials,
                 last_name_for_initials,
@@ -198,8 +198,8 @@ fn main() {
     for i in 0..teacher_type_count {
         teacher_type_data.push(vec![(
             i + 1,
-            add_quotes(&random_teacher_type("name")),
-            add_quotes(&random_teacher_type("displayName")),
+            add_quotes(random_teacher_type("name")),
+            add_quotes(random_teacher_type("displayName")),
         )]);
     }
     generate_teacher_type_csv(

@@ -1,6 +1,8 @@
 use rand::prelude::*;
 use std::ops::{Range, RangeInclusive};
 
+use crate::file::file_to_vector;
+
 pub fn random_number(min: i32, max: i32) -> i32 {
     rand::rng().random_range(min..max)
 }
@@ -22,63 +24,11 @@ pub fn day_from_i32(day_int: i32) -> String {
     }
 }
 
-pub fn random_room() -> &'static str {
-    let rooms: [&str; 51] = [
-        "Ma1",
-        "Ma2",
-        "Ma3",
-        "Ma4",
-        "Ma5",
-        "Ma6",
-        "Ma7",
-        "Ma8",
-        "Ma9",
-        "DT1",
-        "DT2",
-        "DT3",
-        "DT4",
-        "DT5",
-        "IT1",
-        "IT2",
-        "IT3",
-        "La1",
-        "La2",
-        "La3",
-        "La4",
-        "La5",
-        "History1",
-        "History2",
-        "History3",
-        "Geography1",
-        "Geography2",
-        "Geography3",
-        "Sc1",
-        "Sc2",
-        "Sc3",
-        "Sc4",
-        "Sc5",
-        "Sc6",
-        "Sc7",
-        "Sc8",
-        "Sc9",
-        "Sc10",
-        "Eng1",
-        "Eng2",
-        "Eng3",
-        "Eng4",
-        "Eng5",
-        "Eng6",
-        "Eng7",
-        "Eng8",
-        "Music1",
-        "Music2",
-        "Drama1",
-        "Drama2",
-        "PE",
-    ];
+pub fn random_room() -> String {
+    let rooms: Vec<String> = file_to_vector("rooms.txt");
 
     let index: usize = rand::rng().random_range(0..rooms.len());
-    rooms[index]
+    rooms[index].to_owned()
 }
 
 pub fn random_length_random_vector() -> Vec<i32> {
