@@ -1,4 +1,4 @@
-use promptput::input;
+use clap::Parser;
 
 use crate::file::file_to_vector;
 use crate::functions::{
@@ -15,15 +15,41 @@ mod file;
 mod functions;
 mod random;
 
+#[derive(Parser)]
+#[command(rename_all = "snake_case")]
+struct Cli {
+    #[arg(long)]
+    curriculum_count: i32,
+
+    #[arg(long)]
+    period_schedule_count: i32,
+
+    #[arg(long)]
+    room_count: i32,
+
+    #[arg(long)]
+    student_count: i32,
+
+    #[arg(long)]
+    subject_count: i32,
+
+    #[arg(long)]
+    teacher_count: i32,
+
+    #[arg(long)]
+    teacher_type_count: i32,
+}
+
 fn main() {
-    println!("CSV Generator - Enter counts for the following prompts to generate your .CSV file.");
-    let curriculum_count: i32 = input("Curriculum Count:");
-    let period_schedule_count: i32 = input("Period Schedule Count:");
-    let room_count: i32 = input("Room Count:");
-    let student_count: i32 = input("Student Count:");
-    let subject_count: i32 = input("Subject Count:");
-    let teacher_count: i32 = input("Teacher Count:");
-    let teacher_type_count: i32 = input("Teacher Type Count:");
+    let arguments: Cli = Cli::parse();
+
+    let curriculum_count: i32 = arguments.curriculum_count;
+    let period_schedule_count: i32 = arguments.period_schedule_count;
+    let room_count: i32 = arguments.room_count;
+    let student_count: i32 = arguments.student_count;
+    let subject_count: i32 = arguments.subject_count;
+    let teacher_count: i32 = arguments.teacher_count;
+    let teacher_type_count: i32 = arguments.teacher_type_count;
 
     let first_name_list: Vec<String> = file_to_vector("first_names.txt");
     let middle_name_list: Vec<String> = file_to_vector("middle_names.txt");
