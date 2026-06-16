@@ -1,6 +1,4 @@
 /target
-/data
+/.vscode
+
 *.csv
-.idea/
-.vscode/
-*.iml

@@ -1,3 +1,5 @@
+use std::fs;
+
 use clap::Parser;
 
 use crate::file::file_to_vector;
@@ -55,6 +57,8 @@ fn main() {
     let middle_name_list: Vec<String> = file_to_vector("middle_names.txt");
     let last_name_list: Vec<String> = file_to_vector("last_names.txt");
 
+    fs::create_dir_all("output").unwrap();
+
     let mut curriculum_data: Vec<Vec<i32>> = vec![];
     for i in 0..curriculum_count {
         for j in 0..student_count {
@@ -67,7 +71,7 @@ fn main() {
         }
     }
     generate_curriculum_csv(
-        "Curriculum.csv",
+        "output/Curriculum.csv",
         vec!["ID", "StudentID", "SubjectID", "NumberOfLessonsPerWeek"],
         curriculum_data,
     );
@@ -77,7 +81,7 @@ fn main() {
         period_schedule_data.push(vec![(i + 1, day_from_i32(i), random_number(1, 6))])
     }
     generate_period_schedule_csv(
-        "PeriodSchedule.csv",
+        "output/PeriodSchedule.csv",
         vec!["ID", "DayOfWeek", "NumberOfPeriods"],
         period_schedule_data,
     );
@@ -91,7 +95,7 @@ fn main() {
         )]);
     }
     generate_room_csv(
-        "Room.csv",
+        "output/Room.csv",
         vec!["ID", "Name", "MaximumClassSize"],
         room_data,
     );
@@ -120,7 +124,7 @@ fn main() {
     }
 
     generate_student_csv(
-        "Student.csv",
+        "output/Student.csv",
         vec!["ID", "FirstName", "MiddleNames", "Surname", "Initials"],
         student_data,
     );
@@ -137,7 +141,7 @@ fn main() {
         )]);
     }
     generate_subject_csv(
-        "Subject.csv",
+        "output/Subject.csv",
         vec![
             "ID",
             "SubjectName",
@@ -176,7 +180,7 @@ fn main() {
         )]);
     }
     generate_teacher_csv(
-        "Teacher.csv",
+        "output/Teacher.csv",
         vec![
             "ID",
             "FirstName",
@@ -199,7 +203,7 @@ fn main() {
         )]);
     }
     generate_teacher_type_csv(
-        "TeacherType.csv",
+        "output/TeacherType.csv",
         vec!["ID", "Name", "DisplayName"],
         teacher_type_data,
     );
