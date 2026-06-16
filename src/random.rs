@@ -2,11 +2,11 @@ use rand::prelude::*;
 use std::ops::{Range, RangeInclusive};
 
 pub fn random_number(min: i32, max: i32) -> i32 {
-    rand::thread_rng().gen_range(min..max)
+    rand::rng().random_range(min..max)
 }
 
 pub fn random_name(names: &[String]) -> String {
-    let index: usize = rand::thread_rng().gen_range(0..names.len());
+    let index: usize = rand::rng().random_range(0..names.len());
     names[index].to_string()
 }
 
@@ -77,17 +77,17 @@ pub fn random_room() -> &'static str {
         "PE",
     ];
 
-    let index: usize = rand::thread_rng().gen_range(0..rooms.len());
+    let index: usize = rand::rng().random_range(0..rooms.len());
     rooms[index]
 }
 
 pub fn random_length_random_vector() -> Vec<i32> {
-    let mut random_number_generator: ThreadRng = thread_rng();
+    let mut random_number_generator: ThreadRng = rand::rng();
     let length_range: RangeInclusive<usize> = 1..=11;
-    let length: usize = random_number_generator.gen_range(length_range);
+    let length: usize = random_number_generator.random_range(length_range);
 
     (0..length)
-        .map(|_| random_number_generator.gen_range(1..=11))
+        .map(|_| random_number_generator.random_range(1..=11))
         .collect()
 }
 
@@ -101,12 +101,12 @@ pub fn random_teacher_type(type_type: &str) -> String {
     ];
     let display_names: [&str; 5] = ["Teacher", "Cover", "Trainee", "Head", "Assistant"];
 
-    let mut random_number_generator: ThreadRng = thread_rng();
+    let mut random_number_generator: ThreadRng = rand::rng();
     let range: Range<usize> = 0..names.len();
 
     match type_type {
-        "name" => (&names[random_number_generator.gen_range(range)]).to_string(),
-        "displayName" => (&display_names[random_number_generator.gen_range(range)]).to_string(),
+        "name" => (&names[random_number_generator.random_range(range)]).to_string(),
+        "displayName" => (&display_names[random_number_generator.random_range(range)]).to_string(),
         _ => (&names[0]).to_string(),
     }
 }
@@ -130,6 +130,6 @@ pub fn random_subject_name() -> String {
         "RE",
     ];
 
-    let index: usize = rand::thread_rng().gen_range(0..subjects.len());
+    let index: usize = rand::rng().random_range(0..subjects.len());
     subjects[index].to_string()
 }
