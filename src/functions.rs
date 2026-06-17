@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::path::Path;
 
-use crate::PeriodSchedule;
+use crate::{PeriodSchedule, Room};
 
 pub fn generate_initials(first_name: String, middle_name: String, last_name: String) -> String {
     let mut result: String = String::new();
@@ -68,11 +68,7 @@ pub fn generate_period_schedule_csv(
     }
 }
 
-pub fn generate_room_csv(
-    filename: &str,
-    field_headings: Vec<&str>,
-    data: Vec<Vec<(i32, String, i32)>>,
-) {
+pub fn generate_room_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Room>) {
     let path: &Path = Path::new(filename);
     let mut file: File = match File::create(path) {
         Err(why) => panic!("couldn't create {}: {}", path.display(), why),
@@ -89,12 +85,10 @@ pub fn generate_room_csv(
     }
 
     for record in data {
-        let line_including_trailing_comma: String = record
-            .iter()
-            .map(|cell| format!("{}, {}, {}", cell.0, cell.1, cell.2))
-            .collect::<Vec<String>>()
-            .join(",");
-        let line: String = line_including_trailing_comma[0..].to_string();
+        let line: String = format!(
+            "{}, {}, {}",
+            record.id, record.name, record.maximum_class_size
+        );
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
         }

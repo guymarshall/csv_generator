@@ -48,6 +48,120 @@ struct PeriodSchedule {
     number_of_periods: i32,
 }
 
+struct Room {
+    id: i32,
+    name: String,
+    maximum_class_size: i32,
+}
+
+// let mut student_data: Vec<Vec<(String, String, String, String, String)>> = vec![];
+// for i in 0..student_count {
+//     let first_name: String = random_name(&first_name_list);
+//     let middle_name: String = random_name(&middle_name_list);
+//     let last_name: String = random_name(&last_name_list);
+
+//     let first_name_for_initials: String = first_name.clone();
+//     let middle_name_for_initials: String = middle_name.clone();
+//     let last_name_for_initials: String = last_name.clone();
+
+//     student_data.push(vec![(
+//         add_quotes((i + 1).to_string()),
+//         add_quotes(first_name),
+//         add_quotes(middle_name),
+//         add_quotes(last_name),
+//         add_quotes(generate_initials(
+//             first_name_for_initials,
+//             middle_name_for_initials,
+//             last_name_for_initials,
+//         )),
+//     )]);
+// }
+
+// generate_student_csv(
+//     "output/Student.csv",
+//     vec!["ID", "FirstName", "MiddleNames", "Surname", "Initials"],
+//     student_data,
+// );
+
+// let mut subject_data: Vec<Vec<(i32, String, i32, String, i32, String)>> = vec![];
+// for i in 0..subject_count {
+//     subject_data.push(vec![(
+//         i + 1,
+//         add_quotes(random_subject_name()),
+//         random_number(7, 13),
+//         add_quotes(random_number(1, 8).to_string()),
+//         random_number(15, 31),
+//         vector_to_unique_string_with_quotes(&random_length_random_vector()),
+//     )]);
+// }
+// generate_subject_csv(
+//     "output/Subject.csv",
+//     vec![
+//         "ID",
+//         "SubjectName",
+//         "SubjectYear",
+//         "Set",
+//         "MaximumClassSize",
+//         "RoomsTaught",
+//     ],
+//     subject_data,
+// );
+
+// let mut teacher_data: Vec<Vec<(i32, String, String, String, String, i32, String, String)>> =
+//     vec![];
+// for i in 0..teacher_count {
+//     let first_name: String = random_name(&first_name_list);
+//     let middle_name: String = random_name(&middle_name_list);
+//     let last_name: String = random_name(&last_name_list);
+
+//     let first_name_for_initials: String = first_name.clone();
+//     let middle_name_for_initials: String = middle_name.clone();
+//     let last_name_for_initials: String = last_name.clone();
+
+//     teacher_data.push(vec![(
+//         i + 1,
+//         add_quotes(first_name),
+//         add_quotes(middle_name),
+//         add_quotes(last_name),
+//         add_quotes(generate_initials(
+//             first_name_for_initials,
+//             middle_name_for_initials,
+//             last_name_for_initials,
+//         )),
+//         random_number(1, teacher_type_count),
+//         vector_to_unique_string_with_quotes(&random_length_random_vector()),
+//         vector_to_unique_string_with_quotes(&random_length_random_vector()),
+//     )]);
+// }
+// generate_teacher_csv(
+//     "output/Teacher.csv",
+//     vec![
+//         "ID",
+//         "FirstName",
+//         "MiddleName",
+//         "Surname",
+//         "Initials",
+//         "TeacherTypeID",
+//         "SubjectTaughtIDs",
+//         "RoomTaughtIDs",
+//     ],
+//     teacher_data,
+// );
+
+// let mut teacher_type_data: Vec<Vec<(i32, String, String)>> = vec![];
+// for i in 0..teacher_type_count {
+//     teacher_type_data.push(vec![(
+//         i + 1,
+//         add_quotes(random_teacher_type("name")),
+//         add_quotes(random_teacher_type("displayName")),
+//     )]);
+// }
+// generate_teacher_type_csv(
+//     "output/TeacherType.csv",
+//     vec!["ID", "Name", "DisplayName"],
+//     teacher_type_data,
+// );
+
 fn main() {
     let arguments: Cli = Cli::parse();
 
@@ -78,13 +192,13 @@ fn main() {
         period_schedule_data,
     );
 
-    let mut room_data: Vec<Vec<(i32, String, i32)>> = vec![];
+    let mut room_data: Vec<Room> = vec![];
     for i in 0..room_count {
-        room_data.push(vec![(
-            i + 1,
-            add_quotes(random_room()),
-            random_number(15, 31),
-        )]);
+        room_data.push(Room {
+            id: i + 1,
+            name: add_quotes(random_room()),
+            maximum_class_size: random_number(15, 31),
+        });
     }
     generate_room_csv(
         "output/Room.csv",
