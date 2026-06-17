@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-period_schedule_count=60
+period_schedule_count=7
 room_count=50
 student_count=1000
 subject_count=20

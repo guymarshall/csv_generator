@@ -39,6 +39,15 @@ struct Cli {
     teacher_type_count: i32,
 }
 
+// TODO: replace all complex types with structs
+// TODO: make structs and headers correct
+
+struct PeriodSchedule {
+    id: i32,
+    day_of_week: String,
+    number_of_periods: i32,
+}
+
 fn main() {
     let arguments: Cli = Cli::parse();
 
@@ -55,9 +64,13 @@ fn main() {
 
     fs::create_dir_all("output").unwrap();
 
-    let mut period_schedule_data: Vec<Vec<(i32, String, i32)>> = vec![];
+    let mut period_schedule_data: Vec<PeriodSchedule> = vec![];
     for i in 0..period_schedule_count {
-        period_schedule_data.push(vec![(i + 1, day_from_i32(i), random_number(1, 6))])
+        period_schedule_data.push(PeriodSchedule {
+            id: i + 1,
+            day_of_week: day_from_i32(i % 7),
+            number_of_periods: random_number(1, 6),
+        })
     }
     generate_period_schedule_csv(
         "output/PeriodSchedule.csv",
