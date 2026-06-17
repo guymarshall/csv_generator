@@ -62,6 +62,7 @@ pub fn random_teacher_type(type_type: &str) -> String {
 }
 
 pub fn random_subject_name() -> String {
+    // TODO: extract to subjects.txt
     let subjects: Vec<&str> = vec![
         "Maths",
         "Biology",
