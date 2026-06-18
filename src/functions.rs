@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::path::Path;
 
-use crate::{PeriodSchedule, Room};
+use crate::{PeriodSchedule, Room, Student};
 
 pub fn generate_initials(first_name: String, middle_name: String, last_name: String) -> String {
     let mut result: String = String::new();
@@ -92,11 +92,7 @@ pub fn generate_room_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Ro
     }
 }
 
-pub fn generate_student_csv(
-    filename: &str,
-    field_headings: Vec<&str>,
-    data: Vec<Vec<(String, String, String, String, String)>>,
-) {
+pub fn generate_student_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Student>) {
     let path: &Path = Path::new(filename);
     let mut file: File = match File::create(path) {
         Err(why) => panic!("couldn't create {}: {}", path.display(), why),
@@ -113,12 +109,10 @@ pub fn generate_student_csv(
     }
 
     for student in data {
-        let line_including_trailing_comma: String = student
-            .iter()
-            .map(|cell| format!("{}, {}, {}, {}, {}", cell.0, cell.1, cell.2, cell.3, cell.4))
-            .collect::<Vec<String>>()
-            .join(",");
-        let line: String = line_including_trailing_comma[0..].to_string();
+        let line: String = format!(
+            "{}, {}, {}, {}, {}",
+            student.id, student.first_name, student.middle_names, student.surname, student.initials
+        );
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
         }

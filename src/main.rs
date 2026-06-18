@@ -54,34 +54,13 @@ struct Room {
     maximum_class_size: i32,
 }
 
-// let mut student_data: Vec<Vec<(String, String, String, String, String)>> = vec![];
-// for i in 0..student_count {
-//     let first_name: String = random_name(&first_name_list);
-//     let middle_name: String = random_name(&middle_name_list);
-//     let last_name: String = random_name(&last_name_list);
-
-//     let first_name_for_initials: String = first_name.clone();
-//     let middle_name_for_initials: String = middle_name.clone();
-//     let last_name_for_initials: String = last_name.clone();
-
-//     student_data.push(vec![(
-//         add_quotes((i + 1).to_string()),
-//         add_quotes(first_name),
-//         add_quotes(middle_name),
-//         add_quotes(last_name),
-//         add_quotes(generate_initials(
-//             first_name_for_initials,
-//             middle_name_for_initials,
-//             last_name_for_initials,
-//         )),
-//     )]);
-// }
-
-// generate_student_csv(
-//     "output/Student.csv",
-//     vec!["ID", "FirstName", "MiddleNames", "Surname", "Initials"],
-//     student_data,
-// );
+struct Student {
+    id: String,
+    first_name: String,
+    middle_names: String,
+    surname: String,
+    initials: String,
+}
 
 // let mut subject_data: Vec<Vec<(i32, String, i32, String, i32, String)>> = vec![];
 // for i in 0..subject_count {
@@ -206,7 +185,7 @@ fn main() {
         room_data,
     );
 
-    let mut student_data: Vec<Vec<(String, String, String, String, String)>> = vec![];
+    let mut student_data: Vec<Student> = vec![];
     for i in 0..student_count {
         let first_name: String = random_name(&first_name_list);
         let middle_name: String = random_name(&middle_name_list);
@@ -216,17 +195,17 @@ fn main() {
         let middle_name_for_initials: String = middle_name.clone();
         let last_name_for_initials: String = last_name.clone();
 
-        student_data.push(vec![(
-            add_quotes((i + 1).to_string()),
-            add_quotes(first_name),
-            add_quotes(middle_name),
-            add_quotes(last_name),
-            add_quotes(generate_initials(
+        student_data.push(Student {
+            id: add_quotes((i + 1).to_string()),
+            first_name: add_quotes(first_name),
+            middle_names: add_quotes(middle_name),
+            surname: add_quotes(last_name),
+            initials: add_quotes(generate_initials(
                 first_name_for_initials,
                 middle_name_for_initials,
                 last_name_for_initials,
             )),
-        )]);
+        });
     }
 
     generate_student_csv(
