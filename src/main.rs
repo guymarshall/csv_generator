@@ -48,6 +48,46 @@ struct PeriodSchedule {
     number_of_periods: i32,
 }
 
+struct Room {
+    id: i32,
+    name: String,
+    maximum_class_size: i32,
+}
+
+struct Student {
+    id: String,
+    first_name: String,
+    middle_names: String,
+    surname: String,
+    initials: String,
+}
+
+struct Subject {
+    id: i32,
+    subject_name: String,
+    subject_year: i32,
+    set: String,
+    maximum_class_size: i32,
+    rooms_taught: String,
+}
+
+struct Teacher {
+    id: i32,
+    first_name: String,
+    middle_name: String,
+    surname: String,
+    initials: String,
+    teacher_type_id: i32,
+    subject_taught_ids: String,
+    room_taught_ids: String,
+}
+
+struct TeacherType {
+    id: i32,
+    name: String,
+    display_name: String,
+}
+
 fn main() {
     let arguments: Cli = Cli::parse();
 
@@ -78,13 +118,13 @@ fn main() {
         period_schedule_data,
     );
 
-    let mut room_data: Vec<Vec<(i32, String, i32)>> = vec![];
+    let mut room_data: Vec<Room> = vec![];
     for i in 0..room_count {
-        room_data.push(vec![(
-            i + 1,
-            add_quotes(random_room()),
-            random_number(15, 31),
-        )]);
+        room_data.push(Room {
+            id: i + 1,
+            name: add_quotes(random_room()),
+            maximum_class_size: random_number(15, 31),
+        });
     }
     generate_room_csv(
         "output/Room.csv",
@@ -92,7 +132,7 @@ fn main() {
         room_data,
     );
 
-    let mut student_data: Vec<Vec<(String, String, String, String, String)>> = vec![];
+    let mut student_data: Vec<Student> = vec![];
     for i in 0..student_count {
         let first_name: String = random_name(&first_name_list);
         let middle_name: String = random_name(&middle_name_list);
@@ -102,17 +142,17 @@ fn main() {
         let middle_name_for_initials: String = middle_name.clone();
         let last_name_for_initials: String = last_name.clone();
 
-        student_data.push(vec![(
-            add_quotes((i + 1).to_string()),
-            add_quotes(first_name),
-            add_quotes(middle_name),
-            add_quotes(last_name),
-            add_quotes(generate_initials(
+        student_data.push(Student {
+            id: add_quotes((i + 1).to_string()),
+            first_name: add_quotes(first_name),
+            middle_names: add_quotes(middle_name),
+            surname: add_quotes(last_name),
+            initials: add_quotes(generate_initials(
                 first_name_for_initials,
                 middle_name_for_initials,
                 last_name_for_initials,
             )),
-        )]);
+        });
     }
 
     generate_student_csv(
@@ -121,16 +161,16 @@ fn main() {
         student_data,
     );
 
-    let mut subject_data: Vec<Vec<(i32, String, i32, String, i32, String)>> = vec![];
+    let mut subject_data: Vec<Subject> = vec![];
     for i in 0..subject_count {
-        subject_data.push(vec![(
-            i + 1,
-            add_quotes(random_subject_name()),
-            random_number(7, 13),
-            add_quotes(random_number(1, 8).to_string()),
-            random_number(15, 31),
-            vector_to_unique_string_with_quotes(&random_length_random_vector()),
-        )]);
+        subject_data.push(Subject {
+            id: i + 1,
+            subject_name: add_quotes(random_subject_name()),
+            subject_year: random_number(7, 13),
+            set: add_quotes(random_number(1, 8).to_string()),
+            maximum_class_size: random_number(15, 31),
+            rooms_taught: vector_to_unique_string_with_quotes(&random_length_random_vector()),
+        });
     }
     generate_subject_csv(
         "output/Subject.csv",
@@ -145,8 +185,7 @@ fn main() {
         subject_data,
     );
 
-    let mut teacher_data: Vec<Vec<(i32, String, String, String, String, i32, String, String)>> =
-        vec![];
+    let mut teacher_data: Vec<Teacher> = vec![];
     for i in 0..teacher_count {
         let first_name: String = random_name(&first_name_list);
         let middle_name: String = random_name(&middle_name_list);
@@ -156,20 +195,20 @@ fn main() {
         let middle_name_for_initials: String = middle_name.clone();
         let last_name_for_initials: String = last_name.clone();
 
-        teacher_data.push(vec![(
-            i + 1,
-            add_quotes(first_name),
-            add_quotes(middle_name),
-            add_quotes(last_name),
-            add_quotes(generate_initials(
+        teacher_data.push(Teacher {
+            id: i + 1,
+            first_name: add_quotes(first_name),
+            middle_name: add_quotes(middle_name),
+            surname: add_quotes(last_name),
+            initials: add_quotes(generate_initials(
                 first_name_for_initials,
                 middle_name_for_initials,
                 last_name_for_initials,
             )),
-            random_number(1, teacher_type_count),
-            vector_to_unique_string_with_quotes(&random_length_random_vector()),
-            vector_to_unique_string_with_quotes(&random_length_random_vector()),
-        )]);
+            teacher_type_id: random_number(1, teacher_type_count),
+            subject_taught_ids: vector_to_unique_string_with_quotes(&random_length_random_vector()),
+            room_taught_ids: vector_to_unique_string_with_quotes(&random_length_random_vector()),
+        });
     }
     generate_teacher_csv(
         "output/Teacher.csv",
@@ -186,13 +225,13 @@ fn main() {
         teacher_data,
     );
 
-    let mut teacher_type_data: Vec<Vec<(i32, String, String)>> = vec![];
+    let mut teacher_type_data: Vec<TeacherType> = vec![];
     for i in 0..teacher_type_count {
-        teacher_type_data.push(vec![(
-            i + 1,
-            add_quotes(random_teacher_type("name")),
-            add_quotes(random_teacher_type("displayName")),
-        )]);
+        teacher_type_data.push(TeacherType {
+            id: i + 1,
+            name: add_quotes(random_teacher_type("name")),
+            display_name: add_quotes(random_teacher_type("displayName")),
+        });
     }
     generate_teacher_type_csv(
         "output/TeacherType.csv",
