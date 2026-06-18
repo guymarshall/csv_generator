@@ -42,6 +42,7 @@ pub fn random_length_random_vector() -> Vec<i32> {
 }
 
 pub fn random_teacher_type(type_type: &str) -> String {
+    // TODO: extract to teacher_types.txt
     let names: [&str; 5] = [
         "Teacher",
         "Cover Teacher",
