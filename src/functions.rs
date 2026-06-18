@@ -57,15 +57,16 @@ pub fn generate_period_schedule_csv(
         panic!("couldn't write to {}: {}", path.display(), why);
     }
 
-    for period_schedule in data {
-        let line: String = format!(
-            "{}, {}, {}",
-            period_schedule.id, period_schedule.day_of_week, period_schedule.number_of_periods
-        );
-        if let Err(why) = writeln!(file, "{}", line) {
-            panic!("couldn't write to {}: {}", path.display(), why);
-        }
-    }
+    data.into_iter()
+        .for_each(|period_schedule: PeriodSchedule| {
+            let line: String = format!(
+                "{}, {}, {}",
+                period_schedule.id, period_schedule.day_of_week, period_schedule.number_of_periods
+            );
+            if let Err(why) = writeln!(file, "{}", line) {
+                panic!("couldn't write to {}: {}", path.display(), why);
+            }
+        });
 }
 
 pub fn generate_room_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Room>) {
@@ -84,12 +85,12 @@ pub fn generate_room_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Ro
         panic!("couldn't write to {}: {}", path.display(), why);
     }
 
-    for room in data {
+    data.into_iter().for_each(|room: Room| {
         let line: String = format!("{}, {}, {}", room.id, room.name, room.maximum_class_size);
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
         }
-    }
+    });
 }
 
 pub fn generate_student_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Student>) {
@@ -108,7 +109,7 @@ pub fn generate_student_csv(filename: &str, field_headings: Vec<&str>, data: Vec
         panic!("couldn't write to {}: {}", path.display(), why);
     }
 
-    for student in data {
+    data.into_iter().for_each(|student: Student| {
         let line: String = format!(
             "{}, {}, {}, {}, {}",
             student.id, student.first_name, student.middle_names, student.surname, student.initials
@@ -116,7 +117,7 @@ pub fn generate_student_csv(filename: &str, field_headings: Vec<&str>, data: Vec
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
         }
-    }
+    });
 }
 
 pub fn generate_subject_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Subject>) {
@@ -135,7 +136,7 @@ pub fn generate_subject_csv(filename: &str, field_headings: Vec<&str>, data: Vec
         panic!("couldn't write to {}: {}", path.display(), why);
     }
 
-    for subject in data {
+    data.into_iter().for_each(|subject: Subject| {
         let line: String = format!(
             "{}, {}, {}, {}, {}, {}",
             subject.id,
@@ -148,7 +149,7 @@ pub fn generate_subject_csv(filename: &str, field_headings: Vec<&str>, data: Vec
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
         }
-    }
+    });
 }
 
 pub fn generate_teacher_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Teacher>) {
@@ -167,7 +168,7 @@ pub fn generate_teacher_csv(filename: &str, field_headings: Vec<&str>, data: Vec
         panic!("couldn't write to {}: {}", path.display(), why);
     }
 
-    for teacher in data {
+    data.into_iter().for_each(|teacher: Teacher| {
         let line: String = format!(
             "{}, {}, {}, {}, {}, {}, {}, {}",
             teacher.id,
@@ -182,7 +183,7 @@ pub fn generate_teacher_csv(filename: &str, field_headings: Vec<&str>, data: Vec
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
         }
-    }
+    });
 }
 pub fn generate_teacher_type_csv(
     filename: &str,
@@ -204,7 +205,7 @@ pub fn generate_teacher_type_csv(
         panic!("couldn't write to {}: {}", path.display(), why);
     }
 
-    for teacher_type in data {
+    data.into_iter().for_each(|teacher_type: TeacherType| {
         let line: String = format!(
             "{}, {}, {}",
             teacher_type.id, teacher_type.name, teacher_type.display_name
@@ -212,5 +213,5 @@ pub fn generate_teacher_type_csv(
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
         }
-    }
+    });
 }
