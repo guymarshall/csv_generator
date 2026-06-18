@@ -77,7 +77,7 @@ pub fn generate_room_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Ro
 
     let headings_including_trailing_comma: String = field_headings
         .iter()
-        .map(|&heading| heading.to_string() + ",")
+        .map(|heading: &&str| heading.to_string() + ",")
         .collect();
     let headings: String = headings_including_trailing_comma[0..].to_string();
     if let Err(why) = writeln!(file, "{}", headings) {
@@ -108,7 +108,7 @@ pub fn generate_student_csv(
 
     let headings_including_trailing_comma: String = field_headings
         .iter()
-        .map(|&heading| heading.to_string() + ",")
+        .map(|heading: &&str| heading.to_string() + ",")
         .collect();
     let headings: String = headings_including_trailing_comma[0..].to_string();
     if let Err(why) = writeln!(file, "{}", headings) {
@@ -141,7 +141,7 @@ pub fn generate_subject_csv(
 
     let headings_including_trailing_comma: String = field_headings
         .iter()
-        .map(|&heading| heading.to_string() + ",")
+        .map(|heading: &&str| heading.to_string() + ",")
         .collect();
     let headings: String = headings_including_trailing_comma[0..].to_string();
     if let Err(why) = writeln!(file, "{}", headings) {
@@ -179,7 +179,7 @@ pub fn generate_teacher_csv(
 
     let headings_including_trailing_comma: String = field_headings
         .iter()
-        .map(|&heading| heading.to_string() + ",")
+        .map(|heading: &&str| heading.to_string() + ",")
         .collect();
     let headings: String = headings_including_trailing_comma[0..].to_string();
     if let Err(why) = writeln!(file, "{}", headings) {
@@ -216,7 +216,7 @@ pub fn generate_teacher_type_csv(
 
     let headings_including_trailing_comma: String = field_headings
         .iter()
-        .map(|&heading| heading.to_string() + ",")
+        .map(|heading: &&str| heading.to_string() + ",")
         .collect();
     let headings: String = headings_including_trailing_comma[0..].to_string();
     if let Err(why) = writeln!(file, "{}", headings) {
