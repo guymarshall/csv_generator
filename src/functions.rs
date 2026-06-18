@@ -204,10 +204,10 @@ pub fn generate_teacher_type_csv(
         panic!("couldn't write to {}: {}", path.display(), why);
     }
 
-    for teacher_types in data {
+    for teacher_type in data {
         let line: String = format!(
             "{}, {}, {}",
-            teacher_types.id, teacher_types.name, teacher_types.display_name
+            teacher_type.id, teacher_type.name, teacher_type.display_name
         );
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
