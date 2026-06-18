@@ -39,7 +39,6 @@ struct Cli {
     teacher_type_count: i32,
 }
 
-// TODO: replace all complex types with structs
 // TODO: make structs and headers correct
 
 struct PeriodSchedule {
