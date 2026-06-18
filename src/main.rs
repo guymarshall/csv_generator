@@ -82,19 +82,11 @@ struct Teacher {
     room_taught_ids: String,
 }
 
-// let mut teacher_type_data: Vec<Vec<(i32, String, String)>> = vec![];
-// for i in 0..teacher_type_count {
-//     teacher_type_data.push(vec![(
-//         i + 1,
-//         add_quotes(random_teacher_type("name")),
-//         add_quotes(random_teacher_type("displayName")),
-//     )]);
-// }
-// generate_teacher_type_csv(
-//     "output/TeacherType.csv",
-//     vec!["ID", "Name", "DisplayName"],
-//     teacher_type_data,
-// );
+struct TeacherType {
+    id: i32,
+    name: String,
+    display_name: String,
+}
 
 fn main() {
     let arguments: Cli = Cli::parse();
@@ -233,13 +225,13 @@ fn main() {
         teacher_data,
     );
 
-    let mut teacher_type_data: Vec<Vec<(i32, String, String)>> = vec![];
+    let mut teacher_type_data: Vec<TeacherType> = vec![];
     for i in 0..teacher_type_count {
-        teacher_type_data.push(vec![(
-            i + 1,
-            add_quotes(random_teacher_type("name")),
-            add_quotes(random_teacher_type("displayName")),
-        )]);
+        teacher_type_data.push(TeacherType {
+            id: i + 1,
+            name: add_quotes(random_teacher_type("name")),
+            display_name: add_quotes(random_teacher_type("displayName")),
+        });
     }
     generate_teacher_type_csv(
         "output/TeacherType.csv",

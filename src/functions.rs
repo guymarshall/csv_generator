@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::path::Path;
 
-use crate::{PeriodSchedule, Room, Student, Subject, Teacher};
+use crate::{PeriodSchedule, Room, Student, Subject, Teacher, TeacherType};
 
 pub fn generate_initials(first_name: String, middle_name: String, last_name: String) -> String {
     let mut result: String = String::new();
@@ -187,7 +187,7 @@ pub fn generate_teacher_csv(filename: &str, field_headings: Vec<&str>, data: Vec
 pub fn generate_teacher_type_csv(
     filename: &str,
     field_headings: Vec<&str>,
-    data: Vec<Vec<(i32, String, String)>>,
+    data: Vec<TeacherType>,
 ) {
     let path: &Path = Path::new(filename);
     let mut file: File = match File::create(path) {
@@ -205,12 +205,10 @@ pub fn generate_teacher_type_csv(
     }
 
     for teacher_types in data {
-        let line_including_trailing_comma: String = teacher_types
-            .iter()
-            .map(|cell| format!("{}, {}, {}", cell.0, cell.1, cell.2))
-            .collect::<Vec<String>>()
-            .join(",");
-        let line: String = line_including_trailing_comma[0..].to_string();
+        let line: String = format!(
+            "{}, {}, {}",
+            teacher_types.id, teacher_types.name, teacher_types.display_name
+        );
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
         }
