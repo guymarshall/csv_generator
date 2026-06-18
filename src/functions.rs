@@ -84,11 +84,8 @@ pub fn generate_room_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Ro
         panic!("couldn't write to {}: {}", path.display(), why);
     }
 
-    for record in data {
-        let line: String = format!(
-            "{}, {}, {}",
-            record.id, record.name, record.maximum_class_size
-        );
+    for room in data {
+        let line: String = format!("{}, {}, {}", room.id, room.name, room.maximum_class_size);
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
         }
@@ -115,8 +112,8 @@ pub fn generate_student_csv(
         panic!("couldn't write to {}: {}", path.display(), why);
     }
 
-    for record in data {
-        let line_including_trailing_comma: String = record
+    for student in data {
+        let line_including_trailing_comma: String = student
             .iter()
             .map(|cell| format!("{}, {}, {}, {}, {}", cell.0, cell.1, cell.2, cell.3, cell.4))
             .collect::<Vec<String>>()
@@ -148,8 +145,8 @@ pub fn generate_subject_csv(
         panic!("couldn't write to {}: {}", path.display(), why);
     }
 
-    for record in data {
-        let line_including_trailing_comma: String = record
+    for subject in data {
+        let line_including_trailing_comma: String = subject
             .iter()
             .map(|cell| {
                 format!(
@@ -186,8 +183,8 @@ pub fn generate_teacher_csv(
         panic!("couldn't write to {}: {}", path.display(), why);
     }
 
-    for record in data {
-        let line_including_trailing_comma: String = record
+    for teacher in data {
+        let line_including_trailing_comma: String = teacher
             .iter()
             .map(|cell| {
                 format!(
@@ -223,8 +220,8 @@ pub fn generate_teacher_type_csv(
         panic!("couldn't write to {}: {}", path.display(), why);
     }
 
-    for record in data {
-        let line_including_trailing_comma: String = record
+    for teacher_types in data {
+        let line_including_trailing_comma: String = teacher_types
             .iter()
             .map(|cell| format!("{}, {}, {}", cell.0, cell.1, cell.2))
             .collect::<Vec<String>>()
