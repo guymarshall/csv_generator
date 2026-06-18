@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::path::Path;
 
-use crate::{PeriodSchedule, Room, Student, Subject, Teacher, TeacherType};
+use crate::{PeriodSchedule, Room, Student, Subject, Teacher};
 
 pub fn generate_initials(first_name: String, middle_name: String, last_name: String) -> String {
     let mut result: String = String::new();
@@ -179,37 +179,6 @@ pub fn generate_teacher_csv(filename: &str, field_headings: Vec<&str>, data: Vec
             teacher.teacher_type_id,
             teacher.subject_taught_ids,
             teacher.room_taught_ids
-        );
-        if let Err(why) = writeln!(file, "{}", line) {
-            panic!("couldn't write to {}: {}", path.display(), why);
-        }
-    });
-}
-
-pub fn generate_teacher_type_csv(
-    filename: &str,
-    field_headings: Vec<&str>,
-    data: Vec<TeacherType>,
-) {
-    let path: &Path = Path::new(filename);
-    let mut file: File = match File::create(path) {
-        Err(why) => panic!("couldn't create {}: {}", path.display(), why),
-        Ok(file) => file,
-    };
-
-    let headings_including_trailing_comma: String = field_headings
-        .iter()
-        .map(|heading: &&str| heading.to_string() + ",")
-        .collect();
-    let headings: String = headings_including_trailing_comma[0..].to_string();
-    if let Err(why) = writeln!(file, "{}", headings) {
-        panic!("couldn't write to {}: {}", path.display(), why);
-    }
-
-    data.into_iter().for_each(|teacher_type: TeacherType| {
-        let line: String = format!(
-            "{}, {}, {}",
-            teacher_type.id, teacher_type.name, teacher_type.display_name
         );
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);

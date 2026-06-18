@@ -5,7 +5,7 @@ use clap::Parser;
 use crate::file::file_to_vector;
 use crate::functions::{
     add_quotes, generate_initials, generate_period_schedule_csv, generate_room_csv,
-    generate_student_csv, generate_subject_csv, generate_teacher_csv, generate_teacher_type_csv,
+    generate_student_csv, generate_subject_csv, generate_teacher_csv,
     vector_to_unique_string_with_quotes,
 };
 use crate::random::{
@@ -78,12 +78,6 @@ struct Room {
     id: i32,
     name: String,
     maximum_class_size: i32,
-}
-
-struct TeacherType {
-    id: i32,
-    name: String,
-    display_name: String,
 }
 
 fn main() {
@@ -223,18 +217,5 @@ fn main() {
         "output/Room.csv",
         vec!["ID", "Name", "MaximumClassSize"],
         room_data,
-    );
-
-    let teacher_type_data: Vec<TeacherType> = (0..teacher_type_count)
-        .map(|i: i32| TeacherType {
-            id: i + 1,
-            name: add_quotes(random_teacher_type("name")),
-            display_name: add_quotes(random_teacher_type("displayName")),
-        })
-        .collect();
-    generate_teacher_type_csv(
-        "output/TeacherType.csv",
-        vec!["ID", "Name", "DisplayName"],
-        teacher_type_data,
     );
 }
