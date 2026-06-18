@@ -47,12 +47,6 @@ struct PeriodSchedule {
     number_of_periods: i32,
 }
 
-struct Room {
-    id: i32,
-    name: String,
-    maximum_class_size: i32,
-}
-
 struct Student {
     id: String,
     first_name: String,
@@ -79,6 +73,12 @@ struct Teacher {
     teacher_type_id: i32,
     subject_taught_ids: String,
     room_taught_ids: String,
+}
+
+struct Room {
+    id: i32,
+    name: String,
+    maximum_class_size: i32,
 }
 
 struct TeacherType {
@@ -115,20 +115,6 @@ fn main() {
         "output/PeriodSchedule.csv",
         vec!["ID", "DayOfWeek", "NumberOfPeriods"],
         period_schedule_data,
-    );
-
-    let mut room_data: Vec<Room> = vec![];
-    (0..room_count).for_each(|i: i32| {
-        room_data.push(Room {
-            id: i + 1,
-            name: add_quotes(random_room()),
-            maximum_class_size: random_number(15, 31),
-        });
-    });
-    generate_room_csv(
-        "output/Room.csv",
-        vec!["ID", "Name", "MaximumClassSize"],
-        room_data,
     );
 
     let mut student_data: Vec<Student> = vec![];
@@ -222,6 +208,20 @@ fn main() {
             "RoomTaughtIDs",
         ],
         teacher_data,
+    );
+
+    let mut room_data: Vec<Room> = vec![];
+    (0..room_count).for_each(|i: i32| {
+        room_data.push(Room {
+            id: i + 1,
+            name: add_quotes(random_room()),
+            maximum_class_size: random_number(15, 31),
+        });
+    });
+    generate_room_csv(
+        "output/Room.csv",
+        vec!["ID", "Name", "MaximumClassSize"],
+        room_data,
     );
 
     let mut teacher_type_data: Vec<TeacherType> = vec![];
