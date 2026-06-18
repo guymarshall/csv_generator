@@ -185,6 +185,7 @@ pub fn generate_teacher_csv(filename: &str, field_headings: Vec<&str>, data: Vec
         }
     });
 }
+
 pub fn generate_teacher_type_csv(
     filename: &str,
     field_headings: Vec<&str>,
