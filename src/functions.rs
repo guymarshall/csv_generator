@@ -60,8 +60,8 @@ pub fn generate_period_schedule_csv(
     data.into_iter()
         .for_each(|period_schedule: PeriodSchedule| {
             let line: String = format!(
-                "{}, {}, {}",
-                period_schedule.id, period_schedule.day_of_week, period_schedule.number_of_periods
+                "{}, {}",
+                period_schedule.day_of_week, period_schedule.number_of_periods
             );
             if let Err(why) = writeln!(file, "{}", line) {
                 panic!("couldn't write to {}: {}", path.display(), why);

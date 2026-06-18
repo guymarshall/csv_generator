@@ -42,7 +42,6 @@ struct Cli {
 // TODO: make structs and headers correct
 
 struct PeriodSchedule {
-    id: i32,
     day_of_week: String,
     number_of_periods: i32,
 }
@@ -105,7 +104,6 @@ fn main() {
 
     let period_schedule_data: Vec<PeriodSchedule> = (0..period_schedule_count)
         .map(|i: i32| PeriodSchedule {
-            id: i + 1,
             day_of_week: day_from_i32(i % 7),
             number_of_periods: random_number(1, 6),
         })
