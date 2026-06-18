@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::path::Path;
 
-use crate::{PeriodSchedule, Room, Student};
+use crate::{PeriodSchedule, Room, Student, Subject};
 
 pub fn generate_initials(first_name: String, middle_name: String, last_name: String) -> String {
     let mut result: String = String::new();
@@ -119,11 +119,7 @@ pub fn generate_student_csv(filename: &str, field_headings: Vec<&str>, data: Vec
     }
 }
 
-pub fn generate_subject_csv(
-    filename: &str,
-    field_headings: Vec<&str>,
-    data: Vec<Vec<(i32, String, i32, String, i32, String)>>,
-) {
+pub fn generate_subject_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Subject>) {
     let path: &Path = Path::new(filename);
     let mut file: File = match File::create(path) {
         Err(why) => panic!("couldn't create {}: {}", path.display(), why),
@@ -140,17 +136,16 @@ pub fn generate_subject_csv(
     }
 
     for subject in data {
-        let line_including_trailing_comma: String = subject
-            .iter()
-            .map(|cell| {
-                format!(
-                    "{}, {}, {}, {}, {}, {}",
-                    cell.0, cell.1, cell.2, cell.3, cell.4, cell.5
-                )
-            })
-            .collect::<Vec<String>>()
-            .join(",");
-        let line: String = line_including_trailing_comma[0..].to_string();
+        let line: String = format!(
+            "{}, {}, {}, {}, {}, {}",
+            subject.id,
+            subject.subject_name,
+            subject.subject_year,
+            subject.set,
+            subject.maximum_class_size,
+            subject.rooms_taught
+        );
+
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
         }

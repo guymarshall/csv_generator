@@ -62,29 +62,14 @@ struct Student {
     initials: String,
 }
 
-// let mut subject_data: Vec<Vec<(i32, String, i32, String, i32, String)>> = vec![];
-// for i in 0..subject_count {
-//     subject_data.push(vec![(
-//         i + 1,
-//         add_quotes(random_subject_name()),
-//         random_number(7, 13),
-//         add_quotes(random_number(1, 8).to_string()),
-//         random_number(15, 31),
-//         vector_to_unique_string_with_quotes(&random_length_random_vector()),
-//     )]);
-// }
-// generate_subject_csv(
-//     "output/Subject.csv",
-//     vec![
-//         "ID",
-//         "SubjectName",
-//         "SubjectYear",
-//         "Set",
-//         "MaximumClassSize",
-//         "RoomsTaught",
-//     ],
-//     subject_data,
-// );
+struct Subject {
+    id: i32,
+    subject_name: String,
+    subject_year: i32,
+    set: String,
+    maximum_class_size: i32,
+    rooms_taught: String,
+}
 
 // let mut teacher_data: Vec<Vec<(i32, String, String, String, String, i32, String, String)>> =
 //     vec![];
@@ -214,16 +199,16 @@ fn main() {
         student_data,
     );
 
-    let mut subject_data: Vec<Vec<(i32, String, i32, String, i32, String)>> = vec![];
+    let mut subject_data: Vec<Subject> = vec![];
     for i in 0..subject_count {
-        subject_data.push(vec![(
-            i + 1,
-            add_quotes(random_subject_name()),
-            random_number(7, 13),
-            add_quotes(random_number(1, 8).to_string()),
-            random_number(15, 31),
-            vector_to_unique_string_with_quotes(&random_length_random_vector()),
-        )]);
+        subject_data.push(Subject {
+            id: i + 1,
+            subject_name: add_quotes(random_subject_name()),
+            subject_year: random_number(7, 13),
+            set: add_quotes(random_number(1, 8).to_string()),
+            maximum_class_size: random_number(15, 31),
+            rooms_taught: vector_to_unique_string_with_quotes(&random_length_random_vector()),
+        });
     }
     generate_subject_csv(
         "output/Subject.csv",
