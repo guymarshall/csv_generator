@@ -71,46 +71,16 @@ struct Subject {
     rooms_taught: String,
 }
 
-// let mut teacher_data: Vec<Vec<(i32, String, String, String, String, i32, String, String)>> =
-//     vec![];
-// for i in 0..teacher_count {
-//     let first_name: String = random_name(&first_name_list);
-//     let middle_name: String = random_name(&middle_name_list);
-//     let last_name: String = random_name(&last_name_list);
-
-//     let first_name_for_initials: String = first_name.clone();
-//     let middle_name_for_initials: String = middle_name.clone();
-//     let last_name_for_initials: String = last_name.clone();
-
-//     teacher_data.push(vec![(
-//         i + 1,
-//         add_quotes(first_name),
-//         add_quotes(middle_name),
-//         add_quotes(last_name),
-//         add_quotes(generate_initials(
-//             first_name_for_initials,
-//             middle_name_for_initials,
-//             last_name_for_initials,
-//         )),
-//         random_number(1, teacher_type_count),
-//         vector_to_unique_string_with_quotes(&random_length_random_vector()),
-//         vector_to_unique_string_with_quotes(&random_length_random_vector()),
-//     )]);
-// }
-// generate_teacher_csv(
-//     "output/Teacher.csv",
-//     vec![
-//         "ID",
-//         "FirstName",
-//         "MiddleName",
-//         "Surname",
-//         "Initials",
-//         "TeacherTypeID",
-//         "SubjectTaughtIDs",
-//         "RoomTaughtIDs",
-//     ],
-//     teacher_data,
-// );
+struct Teacher {
+    id: i32,
+    first_name: String,
+    middle_name: String,
+    surname: String,
+    initials: String,
+    teacher_type_id: i32,
+    subject_taught_ids: String,
+    room_taught_ids: String,
+}
 
 // let mut teacher_type_data: Vec<Vec<(i32, String, String)>> = vec![];
 // for i in 0..teacher_type_count {
@@ -223,8 +193,7 @@ fn main() {
         subject_data,
     );
 
-    let mut teacher_data: Vec<Vec<(i32, String, String, String, String, i32, String, String)>> =
-        vec![];
+    let mut teacher_data: Vec<Teacher> = vec![];
     for i in 0..teacher_count {
         let first_name: String = random_name(&first_name_list);
         let middle_name: String = random_name(&middle_name_list);
@@ -234,20 +203,20 @@ fn main() {
         let middle_name_for_initials: String = middle_name.clone();
         let last_name_for_initials: String = last_name.clone();
 
-        teacher_data.push(vec![(
-            i + 1,
-            add_quotes(first_name),
-            add_quotes(middle_name),
-            add_quotes(last_name),
-            add_quotes(generate_initials(
+        teacher_data.push(Teacher {
+            id: i + 1,
+            first_name: add_quotes(first_name),
+            middle_name: add_quotes(middle_name),
+            surname: add_quotes(last_name),
+            initials: add_quotes(generate_initials(
                 first_name_for_initials,
                 middle_name_for_initials,
                 last_name_for_initials,
             )),
-            random_number(1, teacher_type_count),
-            vector_to_unique_string_with_quotes(&random_length_random_vector()),
-            vector_to_unique_string_with_quotes(&random_length_random_vector()),
-        )]);
+            teacher_type_id: random_number(1, teacher_type_count),
+            subject_taught_ids: vector_to_unique_string_with_quotes(&random_length_random_vector()),
+            room_taught_ids: vector_to_unique_string_with_quotes(&random_length_random_vector()),
+        });
     }
     generate_teacher_csv(
         "output/Teacher.csv",

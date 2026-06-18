@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::path::Path;
 
-use crate::{PeriodSchedule, Room, Student, Subject};
+use crate::{PeriodSchedule, Room, Student, Subject, Teacher};
 
 pub fn generate_initials(first_name: String, middle_name: String, last_name: String) -> String {
     let mut result: String = String::new();
@@ -151,11 +151,7 @@ pub fn generate_subject_csv(filename: &str, field_headings: Vec<&str>, data: Vec
     }
 }
 
-pub fn generate_teacher_csv(
-    filename: &str,
-    field_headings: Vec<&str>,
-    data: Vec<Vec<(i32, String, String, String, String, i32, String, String)>>,
-) {
+pub fn generate_teacher_csv(filename: &str, field_headings: Vec<&str>, data: Vec<Teacher>) {
     let path: &Path = Path::new(filename);
     let mut file: File = match File::create(path) {
         Err(why) => panic!("couldn't create {}: {}", path.display(), why),
@@ -172,17 +168,17 @@ pub fn generate_teacher_csv(
     }
 
     for teacher in data {
-        let line_including_trailing_comma: String = teacher
-            .iter()
-            .map(|cell| {
-                format!(
-                    "{}, {}, {}, {}, {}, {}, {}, {}",
-                    cell.0, cell.1, cell.2, cell.3, cell.4, cell.5, cell.6, cell.7
-                )
-            })
-            .collect::<Vec<String>>()
-            .join(",");
-        let line: String = line_including_trailing_comma[0..].to_string();
+        let line: String = format!(
+            "{}, {}, {}, {}, {}, {}, {}, {}",
+            teacher.id,
+            teacher.first_name,
+            teacher.middle_name,
+            teacher.surname,
+            teacher.initials,
+            teacher.teacher_type_id,
+            teacher.subject_taught_ids,
+            teacher.room_taught_ids
+        );
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
         }
