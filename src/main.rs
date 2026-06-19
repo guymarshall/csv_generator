@@ -104,7 +104,7 @@ fn main() {
         .collect();
     generate_period_schedule_csv(
         "output/PeriodSchedule.csv",
-        vec!["ID", "DayOfWeek", "NumberOfPeriods"],
+        vec!["DayOfWeek", "NumberOfPeriods"],
         period_schedule_data,
     );
 
