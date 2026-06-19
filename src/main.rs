@@ -5,12 +5,12 @@ use clap::Parser;
 use crate::file::file_to_vector;
 use crate::functions::{
     add_quotes, generate_initials, generate_period_schedule_csv, generate_room_csv,
-    generate_student_csv, generate_subject_csv, generate_teacher_csv,
+    generate_student_csv, generate_subject_csv, generate_teacher_csv, generate_teacher_type_csv,
     vector_to_unique_string_with_quotes,
 };
 use crate::random::{
     day_from_i32, random_length_random_vector, random_name, random_number, random_room,
-    random_subject_name, random_teacher_type,
+    random_subject_name,
 };
 
 mod file;
@@ -34,9 +34,6 @@ struct Cli {
 
     #[arg(long)]
     teacher_count: i32,
-
-    #[arg(long)]
-    teacher_type_count: i32,
 }
 
 // TODO: make structs and headers correct
@@ -81,6 +78,12 @@ struct Room {
     maximum_class_size: i32,
 }
 
+struct TeacherType {
+    id: i32,
+    name: String,
+    display_name: String,
+}
+
 fn main() {
     let arguments: Cli = Cli::parse();
 
@@ -89,11 +92,16 @@ fn main() {
     let student_count: i32 = arguments.student_count;
     let subject_count: i32 = arguments.subject_count;
     let teacher_count: i32 = arguments.teacher_count;
-    let teacher_type_count: i32 = arguments.teacher_type_count;
 
     let first_name_list: Vec<String> = file_to_vector("first_names.txt");
     let middle_name_list: Vec<String> = file_to_vector("middle_names.txt");
     let last_name_list: Vec<String> = file_to_vector("last_names.txt");
+    let teacher_type_name_list: Vec<String> = file_to_vector("teacher_type_names.txt");
+    let teacher_type_count: usize = teacher_type_name_list.len();
+    let teacher_type_display_name_list: Vec<String> =
+        file_to_vector("teacher_type_display_names.txt");
+
+    assert!(teacher_type_count == teacher_type_display_name_list.len());
 
     fs::create_dir_all("output").unwrap();
 
@@ -183,7 +191,7 @@ fn main() {
                         middle_name_for_initials,
                         last_name_for_initials,
                     )),
-                    teacher_type_id: random_number(1, teacher_type_count),
+                    teacher_type_id: random_number(1, teacher_type_count as i32),
                     subject_taught_ids: vector_to_unique_string_with_quotes(
                         &random_length_random_vector(),
                     ),
@@ -219,5 +227,18 @@ fn main() {
         "output/Room.csv",
         vec!["ID", "Name", "MaximumClassSize"],
         room_data,
+    );
+
+    let teacher_type_data: Vec<TeacherType> = (0..teacher_type_count)
+        .map(|i: usize| TeacherType {
+            id: (i + 1) as i32,
+            name: add_quotes(teacher_type_name_list.get(i).unwrap().to_string()),
+            display_name: add_quotes(teacher_type_display_name_list.get(i).unwrap().to_string()),
+        })
+        .collect();
+    generate_teacher_type_csv(
+        "output/TeacherType.csv",
+        vec!["ID", "Name", "DisplayName"],
+        teacher_type_data,
     );
 }

@@ -1,5 +1,5 @@
 use rand::prelude::*;
-use std::ops::{Range, RangeInclusive};
+use std::ops::RangeInclusive;
 
 use crate::file::file_to_vector;
 
@@ -39,27 +39,6 @@ pub fn random_length_random_vector() -> Vec<i32> {
     (0..length)
         .map(|_| random_number_generator.random_range(1..=11))
         .collect()
-}
-
-pub fn random_teacher_type(type_type: &str) -> String {
-    // TODO: extract to teacher_types.txt
-    let names: [&str; 5] = [
-        "Teacher",
-        "Cover Teacher",
-        "Trainee Teacher",
-        "Head of Department",
-        "Assistant Teacher",
-    ];
-    let display_names: [&str; 5] = ["Teacher", "Cover", "Trainee", "Head", "Assistant"];
-
-    let mut random_number_generator: ThreadRng = rand::rng();
-    let range: Range<usize> = 0..names.len();
-
-    match type_type {
-        "name" => (&names[random_number_generator.random_range(range)]).to_string(),
-        "displayName" => (&display_names[random_number_generator.random_range(range)]).to_string(),
-        _ => (&names[0]).to_string(),
-    }
 }
 
 pub fn random_subject_name() -> String {
