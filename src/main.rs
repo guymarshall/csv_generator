@@ -68,7 +68,6 @@ struct Teacher {
     initials: String,
     teacher_type_id: i32,
     subject_taught_ids: String,
-    room_taught_ids: String,
 }
 
 struct Room {
@@ -172,39 +171,35 @@ fn main() {
         subject_data,
     );
 
-    let teacher_data: Vec<Teacher> =
-        (0..teacher_count)
-            .map(|i: i32| {
-                let first_name: String = random_name(&first_name_list);
-                let middle_name: String = random_name(&middle_name_list);
-                let last_name: String = random_name(&last_name_list);
+    let teacher_data: Vec<Teacher> = (0..teacher_count)
+        .map(|i: i32| {
+            let first_name: String = random_name(&first_name_list);
+            let middle_name: String = random_name(&middle_name_list);
+            let last_name: String = random_name(&last_name_list);
 
-                let first_name_for_initials: String = first_name.clone();
-                let middle_name_for_initials: String = middle_name.clone();
-                let last_name_for_initials: String = last_name.clone();
+            let first_name_for_initials: String = first_name.clone();
+            let middle_name_for_initials: String = middle_name.clone();
+            let last_name_for_initials: String = last_name.clone();
 
-                Teacher {
-                    id: i + 1,
-                    staff_code: add_quotes(generate_staff_code(
-                        first_name_for_initials.clone(),
-                        last_name_for_initials.clone(),
-                    )),
-                    name: add_quotes(format!("{first_name} {middle_name} {last_name}")),
-                    initials: add_quotes(generate_initials(
-                        first_name_for_initials,
-                        middle_name_for_initials,
-                        last_name_for_initials,
-                    )),
-                    teacher_type_id: random_number(1, teacher_type_count as i32),
-                    subject_taught_ids: vector_to_unique_string_with_quotes(
-                        &random_length_random_vector(),
-                    ),
-                    room_taught_ids: vector_to_unique_string_with_quotes(
-                        &random_length_random_vector(),
-                    ),
-                }
-            })
-            .collect();
+            Teacher {
+                id: i + 1,
+                staff_code: add_quotes(generate_staff_code(
+                    first_name_for_initials.clone(),
+                    last_name_for_initials.clone(),
+                )),
+                name: add_quotes(format!("{first_name} {middle_name} {last_name}")),
+                initials: add_quotes(generate_initials(
+                    first_name_for_initials,
+                    middle_name_for_initials,
+                    last_name_for_initials,
+                )),
+                teacher_type_id: random_number(1, teacher_type_count as i32),
+                subject_taught_ids: vector_to_unique_string_with_quotes(
+                    &random_length_random_vector(),
+                ),
+            }
+        })
+        .collect();
     generate_teacher_csv(
         "output/Teacher.csv",
         vec![
@@ -214,7 +209,6 @@ fn main() {
             "Initials",
             "TeacherTypeID",
             "SubjectTaughtIDs",
-            "RoomTaughtIDs",
         ],
         teacher_data,
     );

@@ -179,14 +179,13 @@ pub fn generate_teacher_csv(filename: &str, field_headings: Vec<&str>, data: Vec
 
     data.into_iter().for_each(|teacher: Teacher| {
         let line: String = format!(
-            "{}, {}, {}, {}, {}, {}, {}",
+            "{}, {}, {}, {}, {}, {}",
             teacher.id,
             teacher.staff_code,
             teacher.name,
             teacher.initials,
             teacher.teacher_type_id,
             teacher.subject_taught_ids,
-            teacher.room_taught_ids
         );
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
