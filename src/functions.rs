@@ -119,10 +119,7 @@ pub fn generate_student_csv(filename: &str, field_headings: Vec<&str>, data: Vec
     }
 
     data.into_iter().for_each(|student: Student| {
-        let line: String = format!(
-            "{}, {}, {}, {}, {}",
-            student.id, student.first_name, student.middle_names, student.surname, student.initials
-        );
+        let line: String = format!("{}, {}, {}", student.id, student.name, student.initials);
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
         }
@@ -179,12 +176,10 @@ pub fn generate_teacher_csv(filename: &str, field_headings: Vec<&str>, data: Vec
 
     data.into_iter().for_each(|teacher: Teacher| {
         let line: String = format!(
-            "{}, {}, {}, {}, {}, {}, {}, {}, {}",
+            "{}, {}, {}, {}, {}, {}, {}",
             teacher.id,
             teacher.staff_code,
-            teacher.first_name,
-            teacher.middle_name,
-            teacher.surname,
+            teacher.name,
             teacher.initials,
             teacher.teacher_type_id,
             teacher.subject_taught_ids,

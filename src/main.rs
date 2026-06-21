@@ -46,9 +46,7 @@ struct PeriodSchedule {
 
 struct Student {
     id: String,
-    first_name: String,
-    middle_names: String,
-    surname: String,
+    name: String,
     initials: String,
 }
 
@@ -64,9 +62,7 @@ struct Subject {
 struct Teacher {
     id: i32,
     staff_code: String,
-    first_name: String,
-    middle_name: String,
-    surname: String,
+    name: String,
     initials: String,
     teacher_type_id: i32,
     subject_taught_ids: String,
@@ -131,9 +127,7 @@ fn main() {
 
             Student {
                 id: add_quotes((i + 1).to_string()),
-                first_name: add_quotes(first_name),
-                middle_names: add_quotes(middle_name),
-                surname: add_quotes(last_name),
+                name: add_quotes(format! {"{first_name} {middle_name} {last_name}"}),
                 initials: add_quotes(generate_initials(
                     first_name_for_initials,
                     middle_name_for_initials,
@@ -144,7 +138,7 @@ fn main() {
         .collect();
     generate_student_csv(
         "output/Student.csv",
-        vec!["ID", "FirstName", "MiddleNames", "Surname", "Initials"],
+        vec!["ID", "Name", "Initials"],
         student_data,
     );
 
@@ -188,9 +182,7 @@ fn main() {
                         first_name_for_initials.clone(),
                         last_name_for_initials.clone(),
                     )),
-                    first_name: add_quotes(first_name),
-                    middle_name: add_quotes(middle_name),
-                    surname: add_quotes(last_name),
+                    name: add_quotes(format!("{first_name} {middle_name} {last_name}")),
                     initials: add_quotes(generate_initials(
                         first_name_for_initials,
                         middle_name_for_initials,
@@ -210,9 +202,7 @@ fn main() {
         "output/Teacher.csv",
         vec![
             "ID",
-            "FirstName",
-            "MiddleName",
-            "Surname",
+            "Name",
             "Initials",
             "TeacherTypeID",
             "SubjectTaughtIDs",
