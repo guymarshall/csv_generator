@@ -48,6 +48,8 @@ struct Student {
     id: String,
     name: String,
     initials: String,
+    username: String,
+    year_group: i32,
 }
 
 struct Subject {
@@ -125,20 +127,25 @@ fn main() {
             let middle_name_for_initials: String = middle_name.clone();
             let last_name_for_initials: String = last_name.clone();
 
+            let initials: String = generate_initials(
+                first_name_for_initials,
+                middle_name_for_initials,
+                last_name_for_initials,
+            );
+            let id: String = (i + 1).to_string();
+
             Student {
-                id: add_quotes((i + 1).to_string()),
+                id: add_quotes(id.clone()),
                 name: add_quotes(format! {"{first_name} {middle_name} {last_name}"}),
-                initials: add_quotes(generate_initials(
-                    first_name_for_initials,
-                    middle_name_for_initials,
-                    last_name_for_initials,
-                )),
+                initials: add_quotes(initials.clone()),
+                username: add_quotes(format!("{initials}{id}")),
+                year_group: random_number(7, 13),
             }
         })
         .collect();
     generate_student_csv(
         "output/Student.csv",
-        vec!["ID", "Name", "Initials"],
+        vec!["ID", "Name", "Initials", "Username", "YearGroup"],
         student_data,
     );
 
