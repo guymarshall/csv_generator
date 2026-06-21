@@ -202,6 +202,7 @@ fn main() {
         "output/Teacher.csv",
         vec![
             "ID",
+            "StaffCode",
             "Name",
             "Initials",
             "TeacherTypeID",
