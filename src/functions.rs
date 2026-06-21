@@ -20,6 +20,15 @@ pub fn generate_initials(first_name: String, middle_name: String, last_name: Str
     result
 }
 
+pub fn generate_staff_code(first_name: String, last_name: String) -> String {
+    format!(
+        "{}{}{}",
+        first_name.chars().next().unwrap(),
+        last_name.chars().next().unwrap(),
+        last_name.chars().next().unwrap()
+    )
+}
+
 pub fn add_quotes(input: String) -> String {
     format!("\"{}\"", input)
 }
@@ -170,8 +179,9 @@ pub fn generate_teacher_csv(filename: &str, field_headings: Vec<&str>, data: Vec
 
     data.into_iter().for_each(|teacher: Teacher| {
         let line: String = format!(
-            "{}, {}, {}, {}, {}, {}, {}, {}",
+            "{}, {}, {}, {}, {}, {}, {}, {}, {}",
             teacher.id,
+            teacher.staff_code,
             teacher.first_name,
             teacher.middle_name,
             teacher.surname,

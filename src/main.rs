@@ -5,8 +5,8 @@ use clap::Parser;
 use crate::file::file_to_vector;
 use crate::functions::{
     add_quotes, generate_initials, generate_period_schedule_csv, generate_room_csv,
-    generate_student_csv, generate_subject_csv, generate_teacher_csv, generate_teacher_type_csv,
-    vector_to_unique_string_with_quotes,
+    generate_staff_code, generate_student_csv, generate_subject_csv, generate_teacher_csv,
+    generate_teacher_type_csv, vector_to_unique_string_with_quotes,
 };
 use crate::random::{
     day_from_i32, random_length_random_vector, random_name, random_number, random_room,
@@ -63,6 +63,7 @@ struct Subject {
 
 struct Teacher {
     id: i32,
+    staff_code: String,
     first_name: String,
     middle_name: String,
     surname: String,
@@ -183,6 +184,10 @@ fn main() {
 
                 Teacher {
                     id: i + 1,
+                    staff_code: add_quotes(generate_staff_code(
+                        first_name_for_initials.clone(),
+                        last_name_for_initials.clone(),
+                    )),
                     first_name: add_quotes(first_name),
                     middle_name: add_quotes(middle_name),
                     surname: add_quotes(last_name),
