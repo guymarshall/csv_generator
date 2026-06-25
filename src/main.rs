@@ -108,7 +108,7 @@ fn main() {
         })
         .collect();
     generate_period_schedule_csv(
-        "output/PeriodSchedule.csv",
+        "output/period-schedule-template.csv",
         vec!["ID", "DayOfWeek", "NumberOfPeriods"],
         period_schedule_data,
     );
@@ -140,7 +140,7 @@ fn main() {
         })
         .collect();
     generate_student_csv(
-        "output/Student.csv",
+        "output/student-template.csv",
         vec!["ID", "Name", "Initials", "AdmissionNumber", "YearGroup"],
         student_data,
     );
@@ -155,7 +155,7 @@ fn main() {
         })
         .collect();
     generate_subject_csv(
-        "output/Subject.csv",
+        "output/subject-template.csv",
         vec!["ID", "SubjectName", "SubjectYear", "Set", "RoomTaughtIDs"],
         subject_data,
     );
@@ -190,7 +190,7 @@ fn main() {
         })
         .collect();
     generate_teacher_csv(
-        "output/Teacher.csv",
+        "output/teacher-template.csv",
         vec![
             "ID",
             "StaffCode",
@@ -210,7 +210,7 @@ fn main() {
         })
         .collect();
     generate_room_csv(
-        "output/Room.csv",
+        "output/room-template.csv",
         vec!["ID", "Name", "MaximumClassSize"],
         room_data,
     );
@@ -223,7 +223,7 @@ fn main() {
         })
         .collect();
     generate_teacher_type_csv(
-        "output/TeacherType.csv",
+        "output/teacher-type-template.csv",
         vec!["ID", "Name", "DisplayName"],
         teacher_type_data,
     );
