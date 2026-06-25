@@ -153,7 +153,7 @@ pub fn generate_subject_csv(filename: &str, field_headings: Vec<&str>, data: Vec
             subject.subject_year,
             subject.set,
             subject.maximum_class_size,
-            subject.rooms_taught
+            subject.room_taught_ids,
         );
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);

@@ -36,8 +36,6 @@ struct Cli {
     teacher_count: i32,
 }
 
-// TODO: make structs and headers correct
-
 struct PeriodSchedule {
     id: i32,
     day_of_week: String,
@@ -58,7 +56,7 @@ struct Subject {
     subject_year: i32,
     set: String,
     maximum_class_size: i32,
-    rooms_taught: String,
+    room_taught_ids: String,
 }
 
 struct Teacher {
@@ -155,7 +153,7 @@ fn main() {
             subject_year: random_number(7, 13),
             set: add_quotes(random_number(1, 8).to_string()),
             maximum_class_size: random_number(15, 31),
-            rooms_taught: vector_to_unique_string_with_quotes(&random_length_random_vector()),
+            room_taught_ids: vector_to_unique_string_with_quotes(&random_length_random_vector()),
         })
         .collect();
     generate_subject_csv(
@@ -166,7 +164,7 @@ fn main() {
             "SubjectYear",
             "Set",
             "MaximumClassSize",
-            "RoomsTaught",
+            "RoomTaughtIDs",
         ],
         subject_data,
     );
