@@ -147,12 +147,11 @@ pub fn generate_subject_csv(filename: &str, field_headings: Vec<&str>, data: Vec
 
     data.into_iter().for_each(|subject: Subject| {
         let line: String = format!(
-            "{}, {}, {}, {}, {}, {}",
+            "{}, {}, {}, {}, {}",
             subject.id,
             subject.subject_name,
             subject.subject_year,
             subject.set,
-            subject.maximum_class_size,
             subject.room_taught_ids,
         );
         if let Err(why) = writeln!(file, "{}", line) {

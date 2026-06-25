@@ -55,7 +55,6 @@ struct Subject {
     subject_name: String,
     subject_year: i32,
     set: String,
-    maximum_class_size: i32,
     room_taught_ids: String,
 }
 
@@ -152,20 +151,12 @@ fn main() {
             subject_name: add_quotes(random_subject_name()),
             subject_year: random_number(7, 13),
             set: add_quotes(random_number(1, 8).to_string()),
-            maximum_class_size: random_number(15, 31),
             room_taught_ids: vector_to_unique_string_with_quotes(&random_length_random_vector()),
         })
         .collect();
     generate_subject_csv(
         "output/Subject.csv",
-        vec![
-            "ID",
-            "SubjectName",
-            "SubjectYear",
-            "Set",
-            "MaximumClassSize",
-            "RoomTaughtIDs",
-        ],
+        vec!["ID", "SubjectName", "SubjectYear", "Set", "RoomTaughtIDs"],
         subject_data,
     );
 
