@@ -46,7 +46,7 @@ struct Student {
     id: String,
     name: String,
     initials: String,
-    username: String,
+    admission_number: i32,
     year_group: i32,
 }
 
@@ -134,14 +134,14 @@ fn main() {
                 id: add_quotes(id.clone()),
                 name: add_quotes(format! {"{first_name} {middle_name} {last_name}"}),
                 initials: add_quotes(initials.clone()),
-                username: add_quotes(format!("{initials}{id}")),
+                admission_number: i + 1,
                 year_group: random_number(7, 13),
             }
         })
         .collect();
     generate_student_csv(
         "output/Student.csv",
-        vec!["ID", "Name", "Initials", "Username", "YearGroup"],
+        vec!["ID", "Name", "Initials", "AdmissionNumber", "YearGroup"],
         student_data,
     );
 

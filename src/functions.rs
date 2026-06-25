@@ -121,7 +121,11 @@ pub fn generate_student_csv(filename: &str, field_headings: Vec<&str>, data: Vec
     data.into_iter().for_each(|student: Student| {
         let line: String = format!(
             "{}, {}, {}, {}, {}",
-            student.id, student.name, student.initials, student.username, student.year_group
+            student.id,
+            student.name,
+            student.initials,
+            student.admission_number,
+            student.year_group
         );
         if let Err(why) = writeln!(file, "{}", line) {
             panic!("couldn't write to {}: {}", path.display(), why);
