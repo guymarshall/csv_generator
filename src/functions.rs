@@ -47,11 +47,12 @@ pub fn vector_to_unique_string_with_quotes<T: ToString + Eq + std::hash::Hash>(
 }
 
 fn process_headings(field_headings: Vec<&str>) -> String {
-    let headings_including_trailing_comma: String = field_headings
+    let mut headings: String = field_headings
         .iter()
         .map(|heading: &&str| heading.to_string() + ",")
         .collect();
-    headings_including_trailing_comma[0..].to_string()
+    headings.pop();
+    headings
 }
 
 pub fn generate_period_schedule_csv(
